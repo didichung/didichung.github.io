@@ -90,42 +90,12 @@
                 </div>
             </div>
 
-            <div class="md:col-span-5 space-y-4">
+            <div class="md:col-span-5 space-y-4 max-w-full overflow-hidden">
                 <div class="flex items-center justify-between">
                     <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Discography</h2>
-                    <span class="text-[9px] text-gray-600 tracking-widest uppercase">9 Releases</span>
+                    <span id="release-counter" class="text-[9px] text-gray-600 tracking-widest uppercase">0 Releases</span>
                 </div>
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="ll.jpg" alt="Release 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="wmc.jpg" alt="Release 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="salc.jpg" alt="Release 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                     <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="igby.jpg" alt="Release 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>
-                    <div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>
-                    <div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>
-                    <div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>
-                    <div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>
-                </div>
+                <div id="discography-grid" class="no-scrollbar"></div>
             </div>
         </section>
 
@@ -159,45 +129,7 @@
                 <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
             </div>
             
-            <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[1/1] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="jen2.jpeg" alt="Studio Session" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Gallery #1</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="jen3.png" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Gallery #2</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="jen4.jpeg" alt="Visual Workflow" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Gallery #3</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="jen5.jpeg" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Gallery #4</p>
-                    </div>
-                </div>
-                
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="djen3.jpeg" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Gallery #6</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="djen4.jpeg" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Gallery #7</p>
-                    </div>
-                </div>
-            </div>
+            <div id="canvas-slider" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"></div>
         </section>
 
         <section class="max-w-md mx-auto space-y-3 pt-4">
@@ -214,8 +146,8 @@
     <footer class="w-full border-t border-white/[0.03] bg-[#050508]/60 backdrop-blur-md py-10 relative z-10">
         <div class="max-w-4xl w-full mx-auto px-6 flex flex-col items-center space-y-6">
             <div class="flex items-center gap-8 opacity-40 hover:opacity-60 transition duration-300">
-            <img src="dcp_w.png" alt="DC Photon Logo" style="width: 1.25cm; height: 2,5cm; object-fit: contain;">
-                <a href="https://open.spotify.com/artist/0fAdQhvEgxxH6YnRPWhv3A?si=vejjWxg-R3SL0KSs9HBFVA target="_blank" class="hover:opacity-80 transition">
+            <img src="dcp_w.png" alt="DC Photon Logo" style="width: 1.25cm; height: 2.5cm; object-fit: contain;">
+                <a href="https://open.spotify.com/artist/0fAdQhvEgxxH6YnRPWhv3A?si=vejjWxg-R3SL0KSs9HBFVA" target="_blank" class="hover:opacity-80 transition">
                 <svg class="h-8 w-auto fill-current text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.306c-.216.354-.677.47-1.03.254-2.816-1.722-6.36-2.113-10.537-1.16a.75.75 0 1 1-.334-1.463c4.573-1.044 8.491-.595 11.648 1.334.353.216.468.677.253 1.035zm1.47-3.26c-.272.443-.855.584-1.298.312-3.224-1.982-8.14-2.558-11.954-1.4c-.497.151-1.02-.136-1.171-.633s.135-1.02.632-1.17c4.364-1.324 9.774-.678 13.48 1.6 443.272.855.413 1.298.312 1.442zm.11-3.376C14.654 8.09 7.37 7.85 3.14 9.133a.937.937 0 1 1-.54-1.79c4.85-1.47 12.895-1.196 18.064 1.874a.937.937 0 0 1-.95 1.616z"/>
                 </svg>
@@ -236,7 +168,7 @@
     <div class="fixed bottom-6 right-6 z-50 group">
         <a href="index.html" class="flex items-center gap-3 bg-black/80 backdrop-blur-md border border-white/[0.08] p-1.5 pr-4 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-purple-500/40">
             <div class="w-8 h-8 rounded-full overflow-hidden border border-white/10 relative">
-                <img src="didi1.jpeg" alt="Jennifer Haze Portal" class="w-full h-full object-cover">
+                <img src="didi1.jpeg" alt="Didi Chung Page" class="w-full h-full object-cover">
             </div>
             <div class="text-left hidden sm:block">
                 <p class="text-[8px] text-gray-500 tracking-wider uppercase font-medium">Cross Presence</p>
@@ -245,5 +177,80 @@
         </a>
     </div>
 
+    <script>
+        // Database Discography Jennifer Haze (Total 9 Releases sesuai target design)
+        const JEN_DATABASE = [
+            { img: "ll.jpg", url: "#" },
+            { img: "wmc.jpg", url: "#" },
+            { img: "salc.jpg", url: "#" },
+            { img: "igby.jpg", url: "#" }
+            // Tambahkan rilis baru di sini jika ada di kemudian hari
+        ];
+
+        // Database Behind The Canvas & Studio Jennifer Haze
+        const BEHIND_CANVAS_DATABASE = [
+            { img: "jen2.jpeg", caption: "Gallery #1", aspect: "aspect-[1/1]" },
+            { img: "jen3.png",  caption: "Gallery #2", aspect: "aspect-[16/10]" },
+            { img: "jen4.jpeg", caption: "Gallery #3", aspect: "aspect-[16/10]" },
+            { img: "jen5.jpeg", caption: "Gallery #4", aspect: "aspect-[16/10]" },
+            { img: "djen3.jpeg", caption: "Gallery #6", aspect: "aspect-[16/10]" },
+            { img: "djen4.jpeg", caption: "Gallery #7", aspect: "aspect-[16/10]" }
+        ];
+
+        function initJenniferHazePage() {
+            // 1. Render Discography Sektor Grid (Static 9 slots count indicator)
+            document.getElementById('release-counter').innerText = `9 Releases`;
+
+            const gridContainer = document.getElementById('discography-grid');
+            
+            if (JEN_DATABASE.length > 9) {
+                gridContainer.className = "grid grid-rows-3 grid-flow-col gap-2 overflow-x-auto pb-2 no-scrollbar snap-x";
+            } else {
+                gridContainer.className = "grid grid-cols-3 gap-2";
+            }
+
+            gridContainer.innerHTML = '';
+            
+            // Render items dari database
+            JEN_DATABASE.forEach(track => {
+                const sizeClass = JEN_DATABASE.length > 9 ? "w-24 md:w-28 snap-start" : "";
+                gridContainer.innerHTML += `
+                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04] ${sizeClass}">
+                        <img src="${track.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <a href="${track.url || '#'}" target="_blank" class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
+                        </a>
+                    </div>
+                `;
+            });
+
+            // Isih sisa slot kosong hingga total mencapai 9 slot sesuai template visual awal
+            const totalVisualSlots = 9;
+            const currentItems = JEN_DATABASE.length;
+            if (currentItems < totalVisualSlots) {
+                const remainingSlots = totalVisualSlots - currentItems;
+                for (let i = 0; i < remainingSlots; i++) {
+                    gridContainer.innerHTML += `<div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>`;
+                }
+            }
+
+            // 2. Render Behind The Canvas Sektor Slider
+            const canvasContainer = document.getElementById('canvas-slider');
+            canvasContainer.innerHTML = '';
+
+            BEHIND_CANVAS_DATABASE.forEach(item => {
+                canvasContainer.innerHTML += `
+                    <div class="snap-start shrink-0 w-72 md:w-80 ${item.aspect} rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                        <img src="${item.img}" alt="${item.caption}" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">${item.caption}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initJenniferHazePage);
+    </script>
 </body>
 </html>
