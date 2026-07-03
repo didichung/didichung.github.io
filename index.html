@@ -90,60 +90,18 @@
                 </div>
             </div>
 
-            <div class="md:col-span-5 space-y-4">
+            <div class="md:col-span-5 space-y-4 max-w-full overflow-hidden">
                 <div class="flex items-center justify-between">
                     <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Discography</h2>
-                    <span class="text-[9px] text-gray-600 tracking-widest uppercase">9 Releases</span>
+                    <!-- TOTAL RELEASES OTOMATIS BERUBAH DI SINI -->
+                    <span id="release-counter" class="text-[9px] text-gray-600 tracking-widest uppercase">9 Releases</span>
                 </div>
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="rryn.jpg" alt="Release 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="arht.jpg" alt="Release 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="fl.jpg" alt="Release 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="sas.jpg" alt="Release 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="ltb.png" alt="Release 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="ds.png" alt="Release 6" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04]">
-                        <img src="eh.png" alt="Release 7" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
-                        </div>
-                    </div>
-                    <div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>
-                    <div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>
-                </div>
+                <!-- JAVASCRIPT AKAN MENGISI SEKTOR GRID INI DAN MERUBAH NYA MENJADI GRID 3 BARIS HORIZONTAL JIKA MELEBIHI 9 ITEM -->
+                <div id="discography-grid" class="no-scrollbar"></div>
             </div>
         </section>
 
+        <!-- KEMBALI 100% STATIS SESUAI HTML ASLIMU -->
         <section class="space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Album & EP</h2>
@@ -256,7 +214,7 @@
         <div class="max-w-4xl w-full mx-auto px-6 flex flex-col items-center space-y-6">
             
             <div class="flex items-center gap-8 opacity-40 hover:opacity-60 transition duration-300">
-                <img src="dcp_w.png" alt="DC Photon Logo" style="width: 1.25cm; height: 2,5cm; object-fit: contain;">
+                <img src="dcp_w.png" alt="DC Photon Logo" style="width: 1.25cm; height: 2.5cm; object-fit: contain;">
                 <a href="https://open.spotify.com/artist/49XzVOKlkplvCs9vFn5FGR?si=_WVLpwrERI-9btRSOYAeLQ" target="_blank" class="hover:opacity-80 transition">
                 <svg class="h-8 w-auto fill-current text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.306c-.216.354-.677.47-1.03.254-2.816-1.722-6.36-2.113-10.537-1.16a.75.75 0 1 1-.334-1.463c4.573-1.044 8.491-.595 11.648 1.334.353.216.468.677.253 1.035zm1.47-3.26c-.272.443-.855.584-1.298.312-3.224-1.982-8.14-2.558-11.954-1.4c-.497.151-1.02-.136-1.171-.633s.135-1.02.632-1.17c4.364-1.324 9.774-.678 13.48 1.6 443.272.855.413 1.298.312 1.442zm.11-3.376C14.654 8.09 7.37 7.85 3.14 9.133a.937.937 0 1 1-.54-1.79c4.85-1.47 12.895-1.196 18.064 1.874a.937.937 0 0 1-.95 1.616z"/>
@@ -270,7 +228,7 @@
             </div>
 
             <p class="text-[9px] text-gray-600 tracking-[0.3em] uppercase text-center">
-                ℗ 2026 DC PHOTON AUDIO LAB. HAK CIPTA DILINDUNGI. 
+                ℗ 2026 DC PHOTON AUDIO LAB. HAK CIPTA DILINDUNGI.
             </p>
         </div>
     </footer>
@@ -278,7 +236,7 @@
     <div class="fixed bottom-6 right-6 z-50 group">
         <a href="jennifer_haze.html" class="flex items-center gap-3 bg-black/80 backdrop-blur-md border border-white/[0.08] p-1.5 pr-4 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-purple-500/40">
             <div class="w-8 h-8 rounded-full overflow-hidden border border-white/10 relative">
-                <img src="jen1.jpeg" alt="Jennifer Haze Portal" class="w-full h-full object-cover">
+                <img src="jen1.jpeg" alt="Jennifer Haze Page" class="w-full h-full object-cover">
             </div>
             <div class="text-left hidden sm:block">
                 <p class="text-[8px] text-gray-500 tracking-wider uppercase font-medium">Cross Presence</p>
@@ -287,5 +245,61 @@
         </a>
     </div>
 
+    <!-- SCRIPT BERIKUT TELAH DIUBAH AGAR MENDUKUNG GRID 3X3 DENGAN HORIZONTAL SCROLL SAAT DATABASE > 9 -->
+    <script>
+        const DIDI_DATABASE = [
+            { img: "rryn.jpg", url: "https://open.spotify.com/track/4XADtJOdEcCrnrYdOJuAh8?si=4876af28e0c14bb7" },
+            { img: "arht.jpg", url: "#" },
+            { img: "fl.jpg",   url: "#" },
+            { img: "sas.jpg",  url: "#" },
+            { img: "ltb.png",  url: "#" },
+            { img: "ds.png",   url: "#" },
+            { img: "eh.png",   url: "#" },
+            { img: "bt.jpg",   url: "#" },
+            { img: "bam.jpg",  url: "#" },
+            { img: "mh.jpg",   url: "#" }
+        ];
+
+        function initDidiChungPage() {
+            document.getElementById('release-counter').innerText = `${DIDI_DATABASE.length} Releases`;
+
+            const gridContainer = document.getElementById('discography-grid');
+            
+            // Konfigurasi dinamis kelas grid penampung utama
+            if (DIDI_DATABASE.length > 9) {
+                // Mengubah arah alur elemen menjadi kolom (top-to-bottom) dengan tinggi tetap isi 3 baris,
+                // sehingga jika lebih dari 9, sisa kolom otomatis bergeser secara horizontal ke kanan.
+                gridContainer.className = "grid grid-rows-3 grid-flow-col gap-2 overflow-x-auto pb-2 no-scrollbar snap-x";
+            } else {
+                gridContainer.className = "grid grid-cols-3 gap-2";
+            }
+
+            gridContainer.innerHTML = '';
+            
+            DIDI_DATABASE.forEach(track => {
+                // class w-24 md:w-28 ditambahkan khusus saat mode scroll horizontal aktif agar ukuran item tetap konsisten proporsional 3x3
+                const sizeClass = DIDI_DATABASE.length > 9 ? "w-24 md:w-28 snap-start" : "";
+                gridContainer.innerHTML += `
+                    <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04] ${sizeClass}">
+                        <img src="${track.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <a href="${track.url || '#'}" target="_blank" class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
+                        </a>
+                    </div>
+                `;
+            });
+
+            // Penyeimbang simetris kelipatan 3 kolom (Hanya bekerja optimal jika total item <= 9)
+            if (DIDI_DATABASE.length <= 9) {
+                const totalItems = DIDI_DATABASE.length;
+                const extraSlots = totalItems % 3 === 0 ? 0 : 3 - (totalItems % 3);
+                for (let i = 0; i < extraSlots; i++) {
+                    gridContainer.innerHTML += `<div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>`;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initDidiChungPage);
+    </script>
 </body>
 </html>
