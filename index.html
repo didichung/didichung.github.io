@@ -93,15 +93,12 @@
             <div class="md:col-span-5 space-y-4 max-w-full overflow-hidden">
                 <div class="flex items-center justify-between">
                     <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Discography</h2>
-                    <!-- TOTAL RELEASES OTOMATIS BERUBAH DI SINI -->
-                    <span id="release-counter" class="text-[9px] text-gray-600 tracking-widest uppercase">9 Releases</span>
+                    <span id="release-counter" class="text-[9px] text-gray-600 tracking-widest uppercase">0 Releases</span>
                 </div>
-                <!-- JAVASCRIPT AKAN MENGISI SEKTOR GRID INI DAN MERUBAH NYA MENJADI GRID 3 BARIS HORIZONTAL JIKA MELEBIHI 9 ITEM -->
                 <div id="discography-grid" class="no-scrollbar"></div>
             </div>
         </section>
 
-        <!-- KEMBALI 100% STATIS SESUAI HTML ASLIMU -->
         <section class="space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Album & EP</h2>
@@ -146,57 +143,8 @@
                 <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
             </div>
             
-            <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[1/1] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="didi2.jpeg" alt="Studio Session" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Silent Moments — Atmospheric Synthesis</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="didi4.jpeg" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Silent Moments — Digital Exploration</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="didi5.jpeg" alt="Visual Workflow" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Digital Silhouette</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="didi3.jpg" alt="Visual Workflow" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Digital Silhouette</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="djen1.jpeg" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Collab — Studio Synthesis</p>
-                    </div>
-                </div>
-                
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="djen2.jpeg" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Collab — Nocturnal</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="setup1.jpeg" alt="Live Ambient" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Digital Workspace — The Setup</p>
-                    </div>
-                </div>
-                <div class="snap-start shrink-0 w-72 md:w-80 aspect-[16/10] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
-                    <img src="didi6.png" alt="Visual Workflow" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">Digital Workspace — Night Shift</p>
-                    </div>
-                </div>
-            </div>
+            <!-- SEKTOR INI SEKARANG DIOSISIKAN UNTUK DIISI OTOMATIS OLEH DATABASE JAVASCRIPT -->
+            <div id="canvas-slider" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"></div>
         </section>
 
         <section class="max-w-md mx-auto space-y-3 pt-4">
@@ -245,8 +193,8 @@
         </a>
     </div>
 
-    <!-- SCRIPT BERIKUT TELAH DIUBAH AGAR MENDUKUNG GRID 3X3 DENGAN HORIZONTAL SCROLL SAAT DATABASE > 9 -->
     <script>
+        // Database Discography
         const DIDI_DATABASE = [
             { img: "rryn.jpg", url: "https://ffm.to/rivers-remember-your-name" },
             { img: "arht.jpg", url: "https://ffm.to/arahat" },
@@ -261,15 +209,25 @@
             { img: "mh.jpg",   url: "https://ffm.to/molten-heart" }
         ];
 
+        // Database Baru: Behind The Canvas & Studio
+        const BEHIND_CANVAS_DATABASE = [
+            { img: "didi2.jpeg", caption: "Silent Moments — Atmospheric Synthesis", aspect: "aspect-[1/1]" },
+            { img: "didi4.jpeg", caption: "Silent Moments — Digital Exploration", aspect: "aspect-[16/10]" },
+            { img: "didi5.jpeg", caption: "Digital Silhouette", aspect: "aspect-[16/10]" },
+            { img: "didi3.jpg",  caption: "Digital Silhouette", aspect: "aspect-[16/10]" },
+            { img: "djen1.jpeg", caption: "Collab — Studio Synthesis", aspect: "aspect-[16/10]" },
+            { img: "djen2.jpeg", caption: "Collab — Nocturnal", aspect: "aspect-[16/10]" },
+            { img: "setup1.jpeg", caption: "Digital Workspace — The Setup", aspect: "aspect-[16/10]" },
+            { img: "didi6.png",  caption: "Digital Workspace — Night Shift", aspect: "aspect-[16/10]" }
+        ];
+
         function initDidiChungPage() {
+            // 1. Render Discography Sektor Grid
             document.getElementById('release-counter').innerText = `${DIDI_DATABASE.length} Releases`;
 
             const gridContainer = document.getElementById('discography-grid');
             
-            // Konfigurasi dinamis kelas grid penampung utama
             if (DIDI_DATABASE.length > 9) {
-                // Mengubah arah alur elemen menjadi kolom (top-to-bottom) dengan tinggi tetap isi 3 baris,
-                // sehingga jika lebih dari 9, sisa kolom otomatis bergeser secara horizontal ke kanan.
                 gridContainer.className = "grid grid-rows-3 grid-flow-col gap-2 overflow-x-auto pb-2 no-scrollbar snap-x";
             } else {
                 gridContainer.className = "grid grid-cols-3 gap-2";
@@ -278,7 +236,6 @@
             gridContainer.innerHTML = '';
             
             DIDI_DATABASE.forEach(track => {
-                // class w-24 md:w-28 ditambahkan khusus saat mode scroll horizontal aktif agar ukuran item tetap konsisten proporsional 3x3
                 const sizeClass = DIDI_DATABASE.length > 9 ? "w-24 md:w-28 snap-start" : "";
                 gridContainer.innerHTML += `
                     <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04] ${sizeClass}">
@@ -290,7 +247,6 @@
                 `;
             });
 
-            // Penyeimbang simetris kelipatan 3 kolom (Hanya bekerja optimal jika total item <= 9)
             if (DIDI_DATABASE.length <= 9) {
                 const totalItems = DIDI_DATABASE.length;
                 const extraSlots = totalItems % 3 === 0 ? 0 : 3 - (totalItems % 3);
@@ -298,6 +254,21 @@
                     gridContainer.innerHTML += `<div class="aspect-square rounded-lg bg-[#0A0A0F]/50 border border-white/[0.02]"></div>`;
                 }
             }
+
+            // 2. Render Behind The Canvas Sektor Slider
+            const canvasContainer = document.getElementById('canvas-slider');
+            canvasContainer.innerHTML = '';
+
+            BEHIND_CANVAS_DATABASE.forEach(item => {
+                canvasContainer.innerHTML += `
+                    <div class="snap-start shrink-0 w-72 md:w-80 ${item.aspect} rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                        <img src="${item.img}" alt="${item.caption}" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">${item.caption}</p>
+                        </div>
+                    </div>
+                `;
+            });
         }
 
         document.addEventListener('DOMContentLoaded', initDidiChungPage);
