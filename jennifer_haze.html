@@ -40,7 +40,7 @@
             transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
         }
 
-        /* Pure CSS Lava Lamp Glow System (Magenta/Rose Edition) */
+        /* Pure CSS Lava Lamp Glow System - MORE DYNAMIC MOVEMENT */
         .lava-blob {
             position: fixed;
             border-radius: 50%;
@@ -50,36 +50,43 @@
         }
         
         .lava-top {
-            top: -20%;
-            right: -10%;
-            width: 850px;
-            height: 850px;
-            background: radial-gradient(circle, rgba(236, 72, 153, 0.12) 0%, rgba(236, 72, 153, 0) 70%);
-            filter: blur(90px);
-            animation: lavaMoveTop 25s infinite ease-in-out;
+            top: -15%;
+            right: -5%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(236, 72, 153, 0) 70%);
+            filter: blur(65px);
+            opacity: 0.85;
+            /* Durasi disesuaikan agar gerakan fluida cairan lebih hidup */
+            animation: lavaMoveTop 17s infinite ease-in-out;
         }
 
         .lava-bottom {
-            bottom: -10%;
-            left: -15%;
+            bottom: -15%;
+            left: -10%;
             width: 750px;
             height: 750px;
-            background: radial-gradient(circle, rgba(244, 63, 94, 0.1) 0%, rgba(244, 63, 94, 0) 70%);
-            filter: blur(90px);
-            animation: lavaMoveBottom 30s infinite ease-in-out;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.25) 0%, rgba(244, 63, 94, 0) 70%);
+            filter: blur(65px);
+            opacity: 0.8;
+            /* Offset durasi dari blob top agar ritme pergerakan silang terasa natural */
+            animation: lavaMoveBottom 19s infinite ease-in-out;
         }
 
+        /* Koordinat pergerakan berliku yang disesuaikan untuk transisi halus dan dinamis */
         @keyframes lavaMoveTop {
             0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(60px, 40px) scale(1.1); }
-            66% { transform: translate(-30px, 80px) scale(0.95); }
+            25% { transform: translate(110px, 90px) scale(1.15); }
+            50% { transform: translate(-50px, 150px) scale(0.9); }
+            75% { transform: translate(-130px, 70px) scale(1.1); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
 
         @keyframes lavaMoveBottom {
             0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(-50px, -70px) scale(0.95); }
-            66% { transform: translate(40px, -50px) scale(1.05); }
+            30% { transform: translate(-90px, -130px) scale(0.85); }
+            60% { transform: translate(130px, -60px) scale(1.2); }
+            80% { transform: translate(30px, -160px) scale(0.95); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
     </style>
