@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIDI CHUNG // SYS.ONLINE</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['"Orbitron"', 'sans-serif'],
+          ui: ['"Space Grotesk"', 'sans-serif'],
+          mono: ['"Space Mono"', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{
+    --bg:#05070A;
+    --panel:#0A0D13;
+    --line: rgba(231,234,240,0.08);
+    --violet:#7C5CFF;
+    --magenta:#FF3D81;
+    --acid:#C6FF3D;
+    --chrome:#E7EAF0;
+    --muted:#7C8497;
+  }
+  *{ scrollbar-width: thin; scrollbar-color: rgba(124,92,255,0.5) transparent; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--muted); font-family:'Space Grotesk', sans-serif; }
+  .font-display{ font-family:'Orbitron', sans-serif; }
+  .font-mono{ font-family:'Space Mono', monospace; }
+  .no-scrollbar::-webkit-scrollbar{ display:none; }
+  .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+
+  /* scanlines */
+  .scanlines{
+    position:fixed; inset:0; z-index:45; pointer-events:none; opacity:.35; mix-blend-mode:overlay;
+    background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
+  }
+  .noise{
+    position:fixed; inset:0; z-index:44; pointer-events:none; opacity:.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  #scroll-progress{ position:fixed; top:0; left:0; height:2px; background:linear-gradient(90deg, var(--violet), var(--magenta)); z-index:60; width:0%; box-shadow:0 0 10px rgba(124,92,255,.6); }
+
+  /* HUD corner brackets */
+  .bracket{ position:absolute; width:18px; height:18px; border-color:var(--violet); opacity:.6; }
+  .bracket.tl{ top:0; left:0; border-top:1.5px solid; border-left:1.5px solid; }
+  .bracket.tr{ top:0; right:0; border-top:1.5px solid; border-right:1.5px solid; }
+  .bracket.bl{ bottom:0; left:0; border-bottom:1.5px solid; border-left:1.5px solid; }
+  .bracket.br{ bottom:0; right:0; border-bottom:1.5px solid; border-right:1.5px solid; }
+  .hud-frame{ position:relative; }
+
+  /* perspective grid floor */
+  .grid-floor{
+    position:absolute; left:0; right:0; bottom:0; height:55%;
+    background-image:
+      linear-gradient(rgba(124,92,255,0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,92,255,0.18) 1px, transparent 1px);
+    background-size:44px 44px;
+    transform:perspective(500px) rotateX(62deg);
+    transform-origin:bottom;
+    -webkit-mask-image:linear-gradient(to top, black 10%, transparent 90%);
+    mask-image:linear-gradient(to top, black 10%, transparent 90%);
+    animation: floorMove 6s linear infinite;
+  }
+  @keyframes floorMove{ from{ background-position:0 0,0 0;} to{ background-position:0 44px,44px 0;} }
+
+  /* glitch headline */
+  .glitch{ position:relative; }
+  .glitch::before, .glitch::after{
+    content:attr(data-text); position:absolute; top:0; left:0; width:100%; height:100%;
+    background:var(--bg); overflow:hidden; clip-path: inset(0 0 0 0);
+  }
+  .glitch::before{ left:2px; text-shadow:-2px 0 var(--magenta); animation: glitchTop 4s infinite linear alternate-reverse; }
+  .glitch::after{ left:-2px; text-shadow:-2px 0 var(--violet); animation: glitchBottom 4.5s infinite linear alternate-reverse; }
+  @keyframes glitchTop{
+    0%,92%,100%{ clip-path: inset(0 0 95% 0); opacity:0;}
+    93%{ clip-path: inset(10% 0 60% 0); opacity:.7;}
+    95%{ clip-path: inset(40% 0 20% 0); opacity:.7;}
+    97%{ clip-path: inset(70% 0 5% 0); opacity:.7;}
+  }
+  @keyframes glitchBottom{
+    0%,90%,100%{ clip-path: inset(90% 0 0 0); opacity:0;}
+    91%{ clip-path: inset(60% 0 15% 0); opacity:.6;}
+    94%{ clip-path: inset(20% 0 55% 0); opacity:.6;}
+    98%{ clip-path: inset(5% 0 80% 0); opacity:.6;}
+  }
+
+  #particle-canvas{ position:absolute; inset:0; }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  .eq-bar{ width:3px; background:linear-gradient(to top, var(--violet), var(--acid)); animation: eqMove 1.2s ease-in-out infinite; }
+  @keyframes eqMove{ 0%,100%{ transform:scaleY(.2);} 50%{ transform:scaleY(1);} }
+
+  .blink{ animation:blink 1s steps(1) infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .marquee-track{ animation: marquee 22s linear infinite; }
+  @keyframes marquee{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ transition:none; opacity:1; transform:none; }
+    .glitch::before,.glitch::after,.grid-floor,.marquee-track,.eq-bar,.blink{ animation:none; }
+  }
+</style>
+</head>
+<body class="antialiased selection:bg-[#7C5CFF]/30">
+
+<div class="scanlines"></div>
+<div class="noise"></div>
+<div id="scroll-progress"></div>
+
+<!-- TOP HUD BAR -->
+<div class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 h-10 bg-[#05070A]/80 backdrop-blur border-b border-[var(--line)] font-mono text-[10px] tracking-widest text-[var(--muted)]">
+  <div class="flex items-center gap-2">
+    <span class="w-1.5 h-1.5 rounded-full bg-[var(--acid)] animate-pulse"></span>
+    <span>SYS.STATUS: <span class="text-[var(--acid)]">ONLINE</span></span>
+  </div>
+  <div class="hidden sm:block">DIDI_CHUNG.AUDIO_CORE // SEMARANG_ID</div>
+  <div id="hud-clock">00:00:00</div>
+</div>
+
+<main class="pt-10">
+
+  <!-- HERO -->
+  <section class="hud-frame relative min-h-screen flex flex-col justify-center overflow-hidden px-6 md:px-16 border-b border-[var(--line)]">
+    <span class="bracket tl m-4"></span><span class="bracket tr m-4"></span><span class="bracket bl m-4"></span><span class="bracket br m-4"></span>
+
+    <canvas id="particle-canvas" class="opacity-80"></canvas>
+    <div class="grid-floor"></div>
+
+    <div class="relative z-10 max-w-3xl reveal" data-reveal>
+      <p class="font-mono text-[10px] md:text-[11px] tracking-[0.5em] text-[var(--violet)] uppercase mb-6">
+        &gt; Producer / Independent Musician / Digital Artist
+      </p>
+
+      <h1 class="font-display font-black leading-[0.95] text-white text-5xl md:text-7xl uppercase">
+        <span class="glitch block" data-text="DIDI">DIDI</span>
+        <span class="glitch block text-[var(--violet)]" data-text="CHUNG">CHUNG</span>
+      </h1>
+
+      <div class="mt-6 flex flex-wrap gap-x-8 gap-y-2 font-mono text-[10px] md:text-[11px] tracking-widest text-[var(--muted)] uppercase">
+        <span>LOC: SEMARANG, ID</span>
+        <span>GENRE: FUTURE_BEATS × EASTERN_TEXTURE</span>
+      </div>
+
+      <blockquote class="mt-10 font-ui text-xl md:text-3xl text-[var(--chrome)] font-light max-w-xl border-l border-[var(--violet)]/50 pl-6">
+        "Heart meets heart through honest notes."
+      </blockquote>
+
+      <div class="mt-8 space-y-4">
+        <button id="read-more-btn" onclick="toggleBio()" class="font-mono text-[11px] tracking-[0.25em] text-[var(--muted)] hover:text-[var(--acid)] uppercase transition duration-300 flex items-center gap-2">
+          [ Read more ] <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>
+        </button>
+
+        <div id="expanded-bio" class="max-h-0 opacity-0 overflow-hidden text-sm md:text-base text-[var(--muted)] font-light leading-relaxed space-y-4 max-w-xl">
+          <p class="pt-2">
+            Didi Chung is a visual artist and producer based in the historic city of Semarang. His music lives in the space between raw sincerity and electronic exploration, blending subgenres of Future Beats like Chillstep, Liquid Drum and Bass, and Trap Bass with Eastern-inspired textures into a cohesive, atmospheric experience.
+          </p>
+          <p>
+            For Didi, every track is an exercise in <span class="text-[var(--chrome)] font-normal">"Raw Honesty."</span> He finds beauty in the unfinished—in simple, almost childlike melodies that carry a weight far beyond their technical complexity. His work often reflects the contrast between modern digital landscapes and the fragile, quiet moments of human connection.
+          </p>
+          <p>
+            At its heart, Didi's music is an invitation to pause and reflect on the fleeting beauty of existence. It is the sound of silent understanding—a steady gaze that speaks volumes without a single word. Through his compositions, he seeks to bridge the gap between creator and listener, creating a sanctuary where vulnerability is not just welcomed, but celebrated.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-6 left-6 md:left-16 right-6 md:right-16 flex items-center justify-between font-mono text-[9px] tracking-[0.3em] text-[var(--muted)]/60 z-10">
+      <span>SCROLL_TO_DECODE <span class="blink">_</span></span>
+      <span id="coord-readout">X:0000 Y:0000</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="border-b border-[var(--line)] overflow-hidden py-3 bg-[var(--panel)]">
+    <div class="marquee-track flex whitespace-nowrap font-mono text-[10px] tracking-[0.35em] text-[var(--muted)] uppercase w-max">
+      <span class="px-6">RAW HONESTY //</span><span class="px-6">FUTURE BEATS //</span><span class="px-6">CHILLSTEP //</span><span class="px-6">LIQUID DNB //</span><span class="px-6">TRAP BASS //</span><span class="px-6">EASTERN TEXTURE //</span>
+      <span class="px-6">RAW HONESTY //</span><span class="px-6">FUTURE BEATS //</span><span class="px-6">CHILLSTEP //</span><span class="px-6">LIQUID DNB //</span><span class="px-6">TRAP BASS //</span><span class="px-6">EASTERN TEXTURE //</span>
+    </div>
+  </div>
+
+  <!-- MODULE 01 :: LATEST BROADCAST -->
+  <section class="reveal px-6 md:px-16 py-20 border-b border-[var(--line)] grid grid-cols-1 md:grid-cols-12 gap-10 items-center" data-reveal>
+    <div class="md:col-span-8 space-y-4">
+      <p class="font-mono text-[10px] tracking-[0.4em] text-[var(--violet)] uppercase">MODULE_01 // LATEST_BROADCAST</p>
+      <div class="hud-frame rounded-lg overflow-hidden border border-[var(--line)] bg-[var(--panel)] p-1.5">
+        <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+        <iframe style="border-radius:8px" src="https://open.spotify.com/embed/track/4XADtJOdEcCrnrYdOJuAh8?utm_source=generator&si=4876af28e0c14bb7" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="md:col-span-4 flex flex-col items-center md:items-start gap-4">
+      <p class="font-mono text-[10px] tracking-[0.4em] text-[var(--muted)] uppercase">SIGNAL_ANALYSIS</p>
+      <div class="flex items-end gap-1.5 h-16">
+        <div class="eq-bar h-full" style="animation-delay:0s"></div>
+        <div class="eq-bar h-full" style="animation-delay:.15s"></div>
+        <div class="eq-bar h-full" style="animation-delay:.05s"></div>
+        <div class="eq-bar h-full" style="animation-delay:.3s"></div>
+        <div class="eq-bar h-full" style="animation-delay:.1s"></div>
+        <div class="eq-bar h-full" style="animation-delay:.22s"></div>
+        <div class="eq-bar h-full" style="animation-delay:.4s"></div>
+      </div>
+      <p class="font-ui italic text-lg text-[var(--chrome)]">Transmitting a frequency of quiet honesty.</p>
+    </div>
+  </section>
+
+  <!-- MODULE 02 :: ARCHIVE -->
+  <section class="reveal px-6 md:px-16 py-20 border-b border-[var(--line)]" data-reveal>
+    <div class="flex items-end justify-between mb-8">
+      <div>
+        <p class="font-mono text-[10px] tracking-[0.4em] text-[var(--violet)] uppercase mb-2">MODULE_02 // ARCHIVE</p>
+        <h2 class="font-display text-2xl md:text-3xl text-white uppercase">Discography</h2>
+      </div>
+      <span id="release-counter" class="font-mono text-[10px] text-[var(--muted)] tracking-widest uppercase">0 TRACKS</span>
+    </div>
+    <div id="discography-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3"></div>
+  </section>
+
+  <!-- MODULE 03 :: RELEASES -->
+  <section class="px-6 md:px-16 py-20 border-b border-[var(--line)] space-y-10">
+    <div class="reveal" data-reveal>
+      <p class="font-mono text-[10px] tracking-[0.4em] text-[var(--violet)] uppercase mb-2">MODULE_03 // RELEASES</p>
+      <h2 class="font-display text-2xl md:text-3xl text-white uppercase">Album &amp; EP</h2>
+    </div>
+    <div id="album-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  </section>
+
+  <!-- MODULE 04 :: VISUAL LOG -->
+  <section class="reveal px-6 md:px-16 py-20 border-b border-[var(--line)]" data-reveal>
+    <p class="font-mono text-[10px] tracking-[0.4em] text-[var(--violet)] uppercase mb-2">MODULE_04 // VISUAL_LOG</p>
+    <h2 class="font-display text-2xl md:text-3xl text-white uppercase mb-8">Behind The Canvas &amp; Studio</h2>
+    <div id="visual-log-grid" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"></div>
+  </section>
+
+  <!-- MODULE 05 :: UPLINK -->
+  <section class="reveal px-6 md:px-16 py-24 flex flex-col items-center gap-6 text-center" data-reveal>
+    <p class="font-mono text-[10px] tracking-[0.4em] text-[var(--violet)] uppercase">MODULE_05 // UPLINK</p>
+    <p class="font-ui italic text-lg md:text-2xl text-[var(--chrome)] max-w-md">Establish connection. Every honest note deserves a listener.</p>
+    <div class="flex flex-col sm:flex-row gap-4 mt-2 w-full max-w-lg font-mono text-xs">
+      <a href="https://ffm.bio/didichung" target="_blank" class="flex-1 bg-[var(--violet)] text-[#05070A] font-bold py-4 rounded text-center uppercase tracking-widest hover:bg-[var(--acid)] transition duration-300">&gt; EXECUTE: ENTER_WORLD</a>
+      <a href="mailto:didichung06@gmail.com" class="flex-1 border border-[var(--line)] text-[var(--muted)] hover:text-white hover:border-[var(--violet)]/60 py-4 rounded text-center uppercase tracking-widest transition duration-300">&gt; OPEN: COLLAB_CHANNEL</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-[var(--line)] py-10 px-6 md:px-16">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="flex items-center gap-4">
+      <img src="dcp_w.png" alt="DC Photon" class="h-7 w-auto object-contain opacity-40">
+      <p class="font-mono text-[9px] text-[var(--muted)]/60 tracking-[0.3em] uppercase">℗ 2026 DC_PHOTON_AUDIO_LAB // ALL_RIGHTS_RESERVED</p>
+    </div>
+    <div class="flex items-center gap-6 opacity-50 font-mono">
+      <a href="https://open.spotify.com/artist/49XzVOKlkplvCs9vFn5FGR?si=_WVLpwrERI-9btRSOYAeLQ" target="_blank" class="hover:text-[var(--violet)] hover:opacity-100 transition"><svg class="h-5 w-auto fill-current" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.306c-.216.354-.677.47-1.03.254-2.816-1.722-6.36-2.113-10.537-1.16a.75.75 0 1 1-.334-1.463c4.573-1.044 8.491-.595 11.648 1.334.353.216.468.677.253 1.035zm1.47-3.26c-.272.443-.855.584-1.298.312-3.224-1.982-8.14-2.558-11.954-1.4-.497.151-1.02-.136-1.171-.633s.135-1.02.632-1.17c4.364-1.324 9.774-.678 13.48 1.6.443.272.855.413 1.298.312zm.11-3.376C14.654 8.09 7.37 7.85 3.14 9.133a.937.937 0 1 1-.54-1.79c4.85-1.47 12.895-1.196 18.064 1.874a.937.937 0 0 1-.95 1.616z"/></svg></a>
+      <a href="https://youtube.com/@didichung06" target="_blank" class="hover:text-[var(--violet)] hover:opacity-100 transition"><svg class="h-5 w-auto fill-current" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://instagram.com/didichung_official" target="_blank" class="hover:text-[var(--violet)] hover:opacity-100 transition"><svg class="h-5 w-auto fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+      <a href="https://tiktok.com/@didi.chung" target="_blank" class="hover:text-[var(--violet)] hover:opacity-100 transition"><svg class="h-5 w-auto fill-current" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a72.69 72.69 0 1 0 40.23 65.11V0h89.15a111.39 111.39 0 0 0 11 41.52A111.89 111.89 0 0 0 376.51 93.4a109.4 109.4 0 0 0 71.49 23.1z"/></svg></a>
+      <a href="https://facebook.com/didichung66" target="_blank" class="hover:text-[var(--violet)] hover:opacity-100 transition"><svg class="h-5 w-auto fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- CROSS PRESENCE -->
+<a href="jennifer_haze.html" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#05070A]/90 backdrop-blur-md border border-[var(--violet)]/30 p-2 pr-4 rounded shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:border-[var(--violet)]/70 transition duration-300 group font-mono">
+  <div class="w-9 h-9 overflow-hidden border border-[var(--violet)]/50 shrink-0">
+    <img src="jen1.jpg" alt="Jennifer Haze" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+  </div>
+  <div class="text-left hidden sm:block">
+    <p class="text-[8px] text-[var(--violet)] tracking-widest uppercase">Cross_Presence</p>
+    <p class="text-[11px] text-[var(--chrome)] font-semibold">Jennifer Haze</p>
+  </div>
+</a>
+
+<script>
+  // ---------- Databases (kept from source assets) ----------
+  const DIDI_DATABASE = [
+    { img: "rryn.jpg", url: "https://ffm.to/rivers-remember-your-name" },
+    { img: "arht.jpg", url: "https://ffm.to/arahat" },
+    { img: "fl.jpg",   url: "https://ffm.to/floating-lantern" },
+    { img: "sas.jpg",  url: "https://ffm.to/saber-and-sword" },
+    { img: "ltb.png",  url: "https://ffm.to/floating-clouds-in-silence" },
+    { img: "ds.png",   url: "https://ffm.to/the-black-horse" },
+    { img: "eh.png",   url: "https://ffm.to/boddhisatva-of-the-earth" },
+    { img: "ww.jpg",   url: "https://ffm.to/whispering-wind" },
+    { img: "bt.jpg",   url: "https://ffm.to/boddhi-tree" },
+    { img: "bam.jpg",  url: "https://ffm.to/battlefield-at-midnight" },
+    { img: "mh.jpg",   url: "https://ffm.to/molten-heart" }
+  ];
+
+  const ALBUM_DATABASE = [
+    { img: "a_tf.jpg", type: "ALBUM", title: "Temporary Forever" },
+    { img: "a_lh.jpg", type: "ALBUM", title: "Lovely Hometown" },
+    { img: "ltb.png",  type: "EP",    title: "Light The Beginning" },
+    { img: "ds.png",   type: "EP",    title: "Dark Silhouette" },
+    { img: "eh.png",   type: "EP",    title: "Eternal Harmony" }
+  ];
+
+  const BEHIND_CANVAS_DATABASE = [
+    { img: "didi2.jpg", caption: "ATMOSPHERIC_SYNTHESIS", ts: "00:01" },
+    { img: "didi4.jpg", caption: "DIGITAL_EXPLORATION", ts: "00:02" },
+    { img: "didi5.jpg", caption: "MIDNIGHT_MONOLOGUE", ts: "00:03" },
+    { img: "didi3.jpg", caption: "DIGITAL_SILHOUETTE", ts: "00:04" },
+    { img: "didi8.jpg", caption: "SIMPLICITY", ts: "00:05" },
+    { img: "djen1.jpg", caption: "COLLAB_STUDIO_SYNTHESIS", ts: "00:06" },
+    { img: "djen2.jpg", caption: "COLLAB_NOCTURNAL", ts: "00:07" },
+    { img: "djen8.jpg", caption: "COLLAB_LOW_LIGHT", ts: "00:08" },
+    { img: "setup1.jpg", caption: "THE_SETUP", ts: "00:09" },
+    { img: "didi6.png", caption: "NIGHT_SHIFT", ts: "00:10" }
+  ];
+
+  // ---------- Read More Bio (unchanged behavior) ----------
+  function toggleBio() {
+    const bio = document.getElementById('expanded-bio');
+    const btn = document.getElementById('read-more-btn');
+    if (bio.style.maxHeight === '0px' || !bio.style.maxHeight) {
+      bio.style.maxHeight = bio.scrollHeight + 'px';
+      bio.style.opacity = '1';
+      btn.innerHTML = `[ Read less ] <span id="btn-arrow" class="inline-block transition-transform duration-300 rotate-180">↓</span>`;
+    } else {
+      bio.style.maxHeight = '0px';
+      bio.style.opacity = '0';
+      btn.innerHTML = `[ Read more ] <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>`;
+    }
+  }
+
+  // ---------- Render Discography HUD grid ----------
+  function renderDiscography(){
+    document.getElementById('release-counter').innerText = `${DIDI_DATABASE.length} TRACKS`;
+    const grid = document.getElementById('discography-grid');
+    grid.innerHTML = DIDI_DATABASE.map((t, i) => `
+      <div class="hud-frame group relative aspect-square overflow-hidden bg-[var(--panel)] border border-[var(--line)]">
+        <span class="bracket tl" style="width:10px;height:10px;"></span><span class="bracket tr" style="width:10px;height:10px;"></span><span class="bracket bl" style="width:10px;height:10px;"></span><span class="bracket br" style="width:10px;height:10px;"></span>
+        <img src="${t.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+        <div class="absolute top-1 left-1 font-mono text-[8px] text-[var(--acid)] bg-black/50 px-1">TRK-${String(i+1).padStart(3,'0')}</div>
+        <a href="${t.url}" target="_blank" class="absolute inset-0 bg-black/75 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+          <span class="font-mono text-[9px] text-white tracking-widest uppercase">▶ PLAY</span>
+        </a>
+      </div>
+    `).join('');
+  }
+
+  // ---------- Render Album & EP terminal cards ----------
+  function renderAlbums(){
+    const grid = document.getElementById('album-grid');
+    grid.innerHTML = ALBUM_DATABASE.map((a, i) => `
+      <div class="hud-frame group relative aspect-[4/5] overflow-hidden bg-[var(--panel)] border border-[var(--line)] hover:border-[var(--violet)]/50 transition duration-300">
+        <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+        <img src="${a.img}" class="w-full h-full object-cover opacity-90 group-hover:opacity-40 group-hover:scale-105 transition duration-500">
+        <div class="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black via-black/30 to-transparent">
+          <span class="font-mono text-[9px] text-[var(--acid)] tracking-widest uppercase mb-1">${a.type}_${String(i+1).padStart(2,'0')}.WAV</span>
+          <h3 class="font-display text-base text-white uppercase">${a.title}</h3>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ---------- Render Visual Log ----------
+  function renderVisualLog(){
+    const grid = document.getElementById('visual-log-grid');
+    grid.innerHTML = BEHIND_CANVAS_DATABASE.map(item => `
+      <div class="hud-frame snap-start shrink-0 w-64 md:w-72 aspect-[4/3] overflow-hidden bg-[var(--panel)] border border-[var(--line)] relative group">
+        <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+        <img src="${item.img}" alt="${item.caption}" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
+        <div class="absolute top-2 left-2 font-mono text-[8px] text-[var(--violet)] bg-black/50 px-1">LOG_${item.ts}</div>
+        <div class="absolute bottom-3 left-3 right-3">
+          <p class="font-mono text-[9px] tracking-wider text-white bg-black/60 backdrop-blur-md px-2 py-1 inline-block">${item.caption}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ---------- Live HUD clock + fake coordinate readout ----------
+  function initHUD(){
+    const clock = document.getElementById('hud-clock');
+    function tick(){
+      const d = new Date();
+      clock.textContent = d.toTimeString().slice(0,8);
+    }
+    tick(); setInterval(tick, 1000);
+
+    const coord = document.getElementById('coord-readout');
+    window.addEventListener('mousemove', (e) => {
+      coord.textContent = `X:${String(Math.round(e.clientX)).padStart(4,'0')} Y:${String(Math.round(e.clientY)).padStart(4,'0')}`;
+    });
+  }
+
+  // ---------- Scroll progress ----------
+  function initScrollProgress(){
+    const bar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = pct + '%';
+    });
+  }
+
+  // ---------- Scroll reveal ----------
+  function initReveal(){
+    const items = document.querySelectorAll('[data-reveal], .reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.15 });
+    items.forEach(el => io.observe(el));
+  }
+
+  // ---------- Three.js wireframe audio core ----------
+  function initCore(){
+    const canvas = document.getElementById('particle-canvas');
+    if (!window.THREE || !canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const heroSection = canvas.parentElement;
+    let w = heroSection.clientWidth, h = heroSection.clientHeight;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, w/h, 0.1, 1000);
+    camera.position.z = 34;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(w, h);
+
+    const group = new THREE.Group();
+    const geo = new THREE.IcosahedronGeometry(11, 1);
+    const wire = new THREE.WireframeGeometry(geo);
+    const line = new THREE.LineSegments(wire, new THREE.LineBasicMaterial({ color: 0x7C5CFF, transparent:true, opacity:0.55 }));
+    group.add(line);
+
+    const geo2 = new THREE.IcosahedronGeometry(15, 0);
+    const wire2 = new THREE.WireframeGeometry(geo2);
+    const line2 = new THREE.LineSegments(wire2, new THREE.LineBasicMaterial({ color: 0xFF3D81, transparent:true, opacity:0.25 }));
+    group.add(line2);
+
+    group.position.set(6, 0, 0);
+    scene.add(group);
+
+    // faint particle field for depth
+    const count = 260;
+    const positions = new Float32Array(count*3);
+    for(let i=0;i<count;i++){
+      positions[i*3]=(Math.random()-0.5)*100;
+      positions[i*3+1]=(Math.random()-0.5)*70;
+      positions[i*3+2]=(Math.random()-0.5)*60;
+    }
+    const pgeo = new THREE.BufferGeometry();
+    pgeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
+    const pmat = new THREE.PointsMaterial({ color:0xC6FF3D, size:0.6, transparent:true, opacity:0.5 });
+    const points = new THREE.Points(pgeo, pmat);
+    scene.add(points);
+
+    let mouseX=0, mouseY=0;
+    window.addEventListener('mousemove', (e)=>{
+      mouseX = e.clientX/window.innerWidth - 0.5;
+      mouseY = e.clientY/window.innerHeight - 0.5;
+    });
+
+    function resize(){
+      w = heroSection.clientWidth; h = heroSection.clientHeight;
+      camera.aspect = w/h; camera.updateProjectionMatrix();
+      renderer.setSize(w,h);
+    }
+    window.addEventListener('resize', resize);
+
+    function animate(){
+      requestAnimationFrame(animate);
+      group.rotation.y += 0.0032;
+      group.rotation.x += 0.0012;
+      points.rotation.y -= 0.0006;
+      camera.position.x += (mouseX*6 - camera.position.x)*0.03;
+      camera.position.y += (-mouseY*6 - camera.position.y)*0.03;
+      camera.lookAt(scene.position);
+      renderer.render(scene, camera);
+    }
+    animate();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderDiscography();
+    renderAlbums();
+    renderVisualLog();
+    initHUD();
+    initScrollProgress();
+    initReveal();
+    initCore();
+  });
+</script>
+</body>
+</html>
