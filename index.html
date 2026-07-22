@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIDI CHUNG | Official Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Playfair+Display:ital,wght=1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #030305;
+            overflow-x: hidden;
+        }
+        .serif-quote {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom Premium Glassmorphism */
+        .premium-glass {
+            background: rgba(10, 10, 16, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .accent-gradient {
+            background: linear-gradient(135deg, #06b6d4 0%, #38bdf8 100%);
+        }
+        #expanded-bio {
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+        }
+        @keyframes softGlowPulse {
+            0% {
+                box-shadow: 0 0 25px rgba(6, 182, 212, 0.15), inset 0 0 15px rgba(6, 182, 212, 0.05);
+                border-color: rgba(6, 182, 212, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 45px rgba(6, 182, 212, 0.35), inset 0 0 25px rgba(6, 182, 212, 0.15);
+                border-color: rgba(6, 182, 212, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 25px rgba(6, 182, 212, 0.15), inset 0 0 15px rgba(6, 182, 212, 0.05);
+                border-color: rgba(6, 182, 212, 0.2);
+            }
+        }
+        .premium-glow-pulse {
+            animation: softGlowPulse 4s infinite ease-in-out;
+        }
+        @keyframes profileBreathing {
+            0%, 100% {
+                box-shadow: 0 0 35px rgba(6, 182, 212, 0.2), inset 0 0 15px rgba(6, 182, 212, 0.05);
+                border-color: rgba(6, 182, 212, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 55px rgba(6, 182, 212, 0.45), inset 0 0 25px rgba(6, 182, 212, 0.15);
+                border-color: rgba(6, 182, 212, 0.5);
+            }
+        }
+        .profile-breathing-glow {
+            animation: profileBreathing 4s infinite ease-in-out;
+        }
+        .lava-blob {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .lava-top {
+            top: -10%;
+            right: -5%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.4) 0%, rgba(6, 182, 212, 0) 70%);
+            filter: blur(55px);
+            opacity: 0.85;
+            animation: lavaMoveTop 16s infinite ease-in-out;
+        }
+        .lava-bottom {
+            bottom: -15%;
+            left: -10%;
+            width: 650px;
+            height: 650px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(56, 189, 248, 0) 70%);
+            filter: blur(55px);
+            opacity: 0.8;
+            animation: lavaMoveBottom 18s infinite ease-in-out;
+        }
+        @keyframes lavaMoveTop {
+            0% { transform: translate(0px, 0px) scale(1); }
+            25% { transform: translate(120px, 80px) scale(1.15); }
+            50% { transform: translate(-60px, 160px) scale(0.9); }
+            75% { transform: translate(-140px, 60px) scale(1.1); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        @keyframes lavaMoveBottom {
+            0% { transform: translate(0px, 0px) scale(1); }
+            30% { transform: translate(-100px, -140px) scale(0.85); }
+            60% { transform: translate(140px, -70px) scale(1.2); }
+            80% { transform: translate(40px, -180px) scale(0.95); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        
+        /* Styling Default / Horizontal Video Modal */
+        .modal-box {
+            width: 90%;
+            max-width: 700px;
+            aspect-ratio: 16 / 9;
+            margin: auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Styling Khusus Jika Video Vertikal (Shorts) */
+        .modal-box.vertical-mode {
+            max-width: 360px;
+            aspect-ratio: 9 / 16;
+            max-height: 75vh;
+        }
+    </style>
+</head>
+<body class="text-gray-300 min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500/20">
+
+    <div class="lava-blob lava-top"></div>
+    <div class="lava-blob lava-bottom"></div>
+
+    <main class="max-w-4xl w-full mx-auto px-6 md:px-8 flex-grow z-10 pt-20 md:pt-28 space-y-20 mb-20">
+
+        <!-- HEADER -->
+        <header class="fixed top-0 left-0 w-full z-50 bg-[#020204]/40 backdrop-blur-md border-b border-white/[0.02] px-6 py-4">
+            <div class="max-w-6xl mx-auto flex justify-between items-center">
+                <span class="text-xs font-black tracking-[0.4em] text-white uppercase">DIDI CHUNG</span>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">LAB ACTIVE // 2026</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- HERO SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center border-b border-white/[0.04] pb-16">
+            <div class="md:col-span-8 space-y-6 text-center md:text-left order-2 md:order-1">
+                <div class="space-y-2">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white uppercase">
+                        Didi Chung
+                    </h1>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:flex-wrap gap-y-2 gap-x-4 justify-center md:justify-start text-xs md:text-sm tracking-widest font-medium text-cyan-400 uppercase">
+                    <span class="flex items-center justify-center md:justify-start gap-2">Producer</span>
+                    <span class="hidden md:inline text-white/20">•</span>
+                    <span class="flex items-center justify-center md:justify-start gap-2">Independent Musician</span>
+                    <span class="hidden md:inline text-white/20">•</span>
+                    <span class="flex items-center justify-center md:justify-start gap-2">Digital Artist</span>
+                </div>
+
+                <div class="space-y-1 pt-1 text-sm text-gray-400 font-light tracking-wide">
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1 h-1 rounded-full bg-sky-400"></span> Based in Indonesia
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1 h-1 rounded-full bg-sky-400"></span> Future Beats x Eastern-inspired Textures
+                    </p>
+                </div>
+
+                <p class="serif-quote text-xl md:text-2xl text-gray-200 italic font-light border-l-2 border-cyan-400/50 pl-4 py-1 my-4 text-left">
+                    "Heart meets heart through honest notes."
+                </p>
+
+                <div class="space-y-4">
+                    <button id="read-more-btn" onclick="toggleBio()" class="text-xs font-bold tracking-[0.2em] text-white/60 hover:text-cyan-400 uppercase transition duration-300 flex items-center justify-center md:justify-start gap-1 mx-auto md:mx-0">
+                        Read more <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>
+                    </button>
+                    
+                    <div id="expanded-bio" class="max-h-0 opacity-0 overflow-hidden text-sm md:text-base text-gray-400 font-light leading-relaxed space-y-4 text-justify md:text-left">
+                        <p class="pt-2">
+                            Didi Chung is a visual artist and producer based in the historic city of Semarang. His music lives in the space between raw sincerity and electronic exploration, blending subgenres of Future Beats like Chillstep, Liquid Drum and Bass, and Trap Bass with Eastern-inspired textures into a cohesive, atmospheric experience.
+                        </p>
+                        <p>
+                            For Didi, every track is an exercise in <span class="text-white font-normal">"Raw Honesty."</span> He finds beauty in the unfinished—in simple, almost childlike melodies that carry a weight far beyond their technical complexity.
+                        </p>
+                        <p>
+                            At its heart, Didi’s music is an invitation to pause and reflect on the fleeting beauty of existence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 flex justify-center md:justify-end order-1 md:order-2">
+                <div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1.5 bg-[#0A1015] border profile-breathing-glow transition-all duration-700 hover:scale-105 group">
+                    <div class="w-full h-full rounded-full overflow-hidden border border-white/[0.08] relative">
+                        <img src="images/didi1.jpeg" alt="Didi Chung Profile" class="w-full h-full object-cover rounded-full grayscale-[10%] group-hover:grayscale-0 transition duration-700 ease-out">
+                        <div class="absolute inset-0 border border-cyan-500/20 rounded-full pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPOTIFY & DISCOGRAPHY SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-7 space-y-4">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-cyan-400 uppercase flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Latest Sonic Release
+                </h2>
+                <div class="premium-glass p-1.5 rounded-2xl shadow-xl">
+                   <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7vtsCfwKMuaYXetDffDTkd?utm_source=generator&si=38fb58b7c04f4e72" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="md:col-span-5 space-y-4 max-w-full overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Discography</h2>
+                    <span id="release-counter" class="text-[9px] text-gray-600 tracking-widest uppercase">0 Releases</span>
+                </div>
+                <div id="discography-grid" class="no-scrollbar"></div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- YOUTUBE LIST (FROM SPREADSHEET) -->
+        <!-- ========================================== -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-cyan-400 uppercase flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Visual & Audio Broadcasts
+                </h2>
+                <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div id="youtube-list-container" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
+                <p class="text-xs text-gray-500 tracking-widest uppercase animate-pulse py-4">Fetching YouTube Feed...</p>
+            </div>
+        </section>
+
+        <!-- ALBUM & EP SECTION -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Album & EP</h2>
+                <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
+            </div>
+            
+            <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
+                 <div class="snap-start shrink-0 w-64 md:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                    <img src="images/a_tf.jpeg" alt="Album 1" class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-102">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-5 flex flex-col justify-end">
+                        <span class="text-[9px] font-bold tracking-widest text-cyan-400 uppercase mb-1">Album</span>
+                        <h3 class="text-sm font-semibold text-white truncate">Temporary Forever</h3>
+                    </div>
+                </div>
+                <div class="snap-start shrink-0 w-64 md:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                    <img src="images/a_lh.jpeg" alt="Album 2" class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-102">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-5 flex flex-col justify-end">
+                        <span class="text-[9px] font-bold tracking-widest text-cyan-400 uppercase mb-1">Album</span>
+                        <h3 class="text-sm font-semibold text-white truncate">Lovely Hometown</h3>
+                    </div>
+                </div>
+                <div class="snap-start shrink-0 w-64 md:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                    <img src="images/ltb.png" alt="Album 3" class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-102">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-5 flex flex-col justify-end">
+                        <span class="text-[9px] font-bold tracking-widest text-cyan-400 uppercase mb-1">EP</span>
+                        <h3 class="text-sm font-semibold text-white truncate">Light The Beginning</h3>
+                    </div>
+                </div>
+                <div class="snap-start shrink-0 w-64 md:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                    <img src="images/ds.png" alt="Album 4" class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-102">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-5 flex flex-col justify-end">
+                        <span class="text-[9px] font-bold tracking-widest text-cyan-400 uppercase mb-1">EP</span>
+                        <h3 class="text-sm font-semibold text-white truncate">Dark Silhouette</h3>
+                    </div>
+                </div>
+                <div class="snap-start shrink-0 w-64 md:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                    <img src="images/eh.png" alt="Album 5" class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-102">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-5 flex flex-col justify-end">
+                        <span class="text-[9px] font-bold tracking-widest text-cyan-400 uppercase mb-1">EP</span>
+                        <h3 class="text-sm font-semibold text-white truncate">Eternal Harmony</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEHIND THE CANVAS SECTION -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Behind The Canvas & Studio</h2>
+                <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
+            </div>
+            <div id="canvas-slider" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"></div>
+        </section>
+
+        <!-- CTA BUTTONS SECTION -->
+        <section class="max-w-md mx-auto space-y-3 pt-4">
+            <a href="https://ffm.bio/didichung" target="_blank" class="accent-gradient block w-full text-black font-bold py-4 rounded-xl text-xs tracking-[0.2em] text-center uppercase shadow-[0_4px_20px_rgba(6,182,212,0.25)] hover:opacity-90 transition duration-300">
+                Step Into My World
+            </a>
+            <a href="mailto:didichung06@gmail.com" class="block w-full bg-white/[0.02] hover:bg-white/[0.04] text-gray-400 hover:text-white border border-white/[0.05] py-4 rounded-xl text-xs font-bold tracking-[0.2em] text-center uppercase transition duration-300">
+                Inquiries & Collaboration
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="w-full border-t border-white/[0.03] bg-[#050508]/60 backdrop-blur-md py-10 relative z-10">
+        <div class="max-w-4xl w-full mx-auto px-6 flex flex-col items-center space-y-6">
+            <div class="flex items-center gap-6 md:gap-8 opacity-40 hover:opacity-60 transition duration-300 flex-wrap justify-center">
+                <a href="https://open.spotify.com/artist/49XzVOKlkplvCs9vFn5FGR?si=_WVLpwrERI-9btRSOYAeLQ" target="_blank" class="hover:text-cyan-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-cyan-400 transition" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.306c-.216.354-.677.47-1.03.254-2.816-1.722-6.36-2.113-10.537-1.16a.75.75 0 1 1-.334-1.463c4.573-1.044 8.491-.595 11.648 1.334.353.216.468.677.253 1.035zm1.47-3.26c-.272.443-.855.584-1.298.312-3.224-1.982-8.14-2.558-11.954-1.4c-.497.151-1.02-.136-1.171-.633s.135-1.02.632-1.17c4.364-1.324 9.774-.678 13.48 1.6.443.272.855.413 1.298.312 1.442zm.11-3.376C14.654 8.09 7.37 7.85 3.14 9.133a.937.937 0 1 1-.54-1.79c4.85-1.47 12.895-1.196 18.064 1.874a.937.937 0 0 1-.95 1.616z"/></svg>
+                </a>
+                <a href="https://youtube.com/@didichung06" target="_blank" class="hover:text-cyan-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-cyan-400 transition" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>                        
+                </a>
+                <a href="https://instagram.com/didichung_official" target="_blank" class="hover:text-cyan-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-cyan-400 transition" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                </a>
+                <a href="https://tiktok.com/@didi.chung" target="_blank" class="hover:text-cyan-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-cyan-400 transition" viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a72.69 72.69 0 1 0 40.23 65.11V0h89.15a111.39 111.39 0 0 0 11 41.52A111.89 111.89 0 0 0 376.51 93.4a109.4 109.4 0 0 0 71.49 23.1z"/></svg>
+                </a>
+                <a href="https://facebook.com/didichung66" target="_blank" class="hover:text-cyan-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-cyan-400 transition" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <img src="images/dcp_w.png" alt="DC Photon Logo" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition duration-300">
+                <p class="text-[9px] text-gray-500 tracking-[0.3em] uppercase leading-relaxed">
+                    ℗ 2026 DC PHOTON AUDIO LAB.<br>ALL SYSTEMS REGISTERED.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOGGLE BUTTON RIGHT -->
+    <div class="fixed bottom-6 right-6 z-50 group">
+        <a href="jennifer_haze.html" class="flex items-center gap-4 bg-black/90 backdrop-blur-md border border-cyan-500/30 p-2.5 pr-5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-cyan-400 hover:scale-105 relative">
+            <span class="absolute inset-0 rounded-full border border-cyan-500/50 animate-ping opacity-70 pointer-events-none"></span>
+            <span class="absolute -inset-1 rounded-full bg-cyan-500/10 blur-md opacity-100 pointer-events-none"></span>
+            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-cyan-500/60 relative shrink-0 shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:shadow-[0_0_20px_rgba(6,182,212,0.8)] transition-all duration-300">
+                <img src="images/jen1.jpeg" alt="Jennifer Haze Page" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </div>
+            <div class="text-left hidden sm:block">
+                <p class="text-[9px] text-cyan-400 tracking-widest uppercase font-semibold">Cross Presence</p>
+                <p class="text-xs text-gray-200 font-bold tracking-wide group-hover:text-white transition duration-300">Jennifer Haze</p>
+            </div>
+        </a>
+    </div>
+
+    <!-- TOGGLE BUTTON LEFT -->
+    <div class="fixed bottom-6 left-6 z-50 group">
+        <button onclick="toggleCommentModal()" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-cyan-500/30 p-2.5 px-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-cyan-400 hover:scale-105 relative">
+            <span class="absolute inset-0 rounded-full border border-cyan-500/50 animate-ping opacity-70 pointer-events-none"></span>
+            <span class="absolute -inset-1 rounded-full bg-cyan-500/10 blur-md opacity-100 pointer-events-none"></span>
+            <div class="w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+            </div>
+            <div class="text-left hidden sm:block">
+                <p class="text-[9px] text-cyan-400 tracking-widest uppercase font-semibold">Feedback</p>
+                <p class="text-xs text-gray-200 font-bold tracking-wide">Comments</p>
+            </div>
+        </button>
+    </div>
+
+    <!-- MODAL BOX: COMMENTS -->
+    <div id="comment-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="premium-glass w-full max-w-lg rounded-2xl border border-cyan-500/20 p-6 shadow-[0_0_50px_rgba(6,182,212,0.15)] relative flex flex-col max-h-[85vh]">
+            <div class="flex justify-between items-center pb-4 border-b border-white/[0.06]">
+                <div>
+                    <h3 class="text-sm font-bold tracking-[0.2em] text-white uppercase flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Comments & Critique
+                    </h3>
+                    <p class="text-[10px] text-gray-400 tracking-wider mt-0.5">Leave your thoughts or sound responses</p>
+                </div>
+                <button onclick="toggleCommentModal()" class="text-gray-400 hover:text-white text-lg font-bold p-1">&times;</button>
+            </div>
+
+            <div id="comments-list" class="flex-grow overflow-y-auto py-4 space-y-3 no-scrollbar my-2 max-h-[300px]">
+                <p id="comments-loading" class="text-xs text-gray-500 text-center py-6 tracking-widest uppercase animate-pulse">Loading responses...</p>
+            </div>
+
+            <form id="comment-form" onsubmit="submitComment(event)" class="space-y-3 pt-3 border-t border-white/[0.06]">
+                <div class="grid grid-cols-1 gap-2">
+                    <input type="text" id="user-name" required placeholder="Your Name / Handle" class="w-full bg-black/50 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition">
+                    <div class="relative">
+                        <textarea id="user-message" maxlength="256" required oninput="updateCharCount(this)" rows="2" placeholder="Write your feedback (max 256 chars)..." class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition resize-none"></textarea>
+                        <span id="char-count" class="absolute bottom-2 right-3 text-[9px] text-gray-500 tracking-widest">0 / 256</span>
+                    </div>
+                </div>
+
+                <div id="image-preview-container" class="hidden relative inline-block">
+                    <img id="image-preview" src="" alt="Preview" class="h-20 w-auto rounded-lg border border-cyan-500/40 object-cover shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                    <button type="button" onclick="removeSelectedImage()" class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shadow-md">&times;</button>
+                </div>
+
+                <div class="flex items-center justify-between gap-2 pt-1">
+                    <label class="cursor-pointer flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition bg-white/[0.03] border border-white/10 px-3 py-2 rounded-xl">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                        <span id="file-label" class="text-[10px] font-medium tracking-wider uppercase truncate max-w-[120px]">Attach Image</span>
+                        <input type="file" id="image-input" accept="image/*" onchange="handleImageUpload(event)" class="hidden">
+                    </label>
+
+                    <button type="submit" id="submit-btn" class="accent-gradient text-black font-bold px-5 py-2.5 rounded-xl text-xs tracking-[0.15em] uppercase hover:opacity-90 transition shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- MODAL BOX: YOUTUBE VIDEO PLAYER -->
+    <!-- ========================================== -->
+    <div id="youtube-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="modal-container-box" class="modal-box premium-glass rounded-2xl border border-cyan-500/20 p-4 md:p-6 shadow-[0_0_50px_rgba(6,182,212,0.2)] relative flex flex-col gap-4 max-h-[90vh] overflow-y-auto no-scrollbar">
+            
+            <div class="flex justify-between items-start border-b border-white/[0.06] pb-3">
+                <div class="pr-6">
+                    <h3 id="yt-modal-title" class="text-sm md:text-base font-bold text-white leading-snug">Video Title</h3>
+                    <p class="text-[10px] text-cyan-400 font-medium tracking-wider uppercase mt-1 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Official Release
+                    </p>
+                </div>
+                <button onclick="closeYoutubeModal()" class="text-gray-400 hover:text-white text-2xl font-bold p-1 leading-none">&times;</button>
+            </div>
+
+            <!-- Responsive Video Container -->
+            <div class="relative w-full flex-grow rounded-xl overflow-hidden bg-black border border-white/10 shadow-2xl">
+                <iframe id="yt-modal-iframe" class="w-full h-full" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <!-- Description -->
+            <div class="bg-black/40 border border-white/[0.04] p-4 rounded-xl space-y-1 shrink-0">
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Description</p>
+                <div id="yt-modal-description" class="text-xs text-gray-300 leading-relaxed whitespace-pre-wrap max-h-28 overflow-y-auto no-scrollbar font-light"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwpTTi5H1o4kqoEbzbojxNHEbOolWpfhIxXxru6jQzrdn572dnt8w5QH8HwYw26rdrlbw/exec"; 
+
+    let base64Attachment = "";
+
+    function formatDate(dateString) {
+        if (!dateString) return '';
+        const d = new Date(dateString);
+        if (isNaN(d.getTime())) return dateString;
+
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const year = d.getFullYear();
+        const hours = String(d.getHours()).padStart(2, '0');
+        const minutes = String(d.getMinutes()).padStart(2, '0');
+
+        return `${day}/${month}/${year} ${hours}:${minutes}`;
+    }
+
+    function handleImageUpload(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const maxDimension = 640;
+
+                if (width > height) {
+                    if (width > maxDimension) {
+                        height = Math.round((height * maxDimension) / width);
+                        width = maxDimension;
+                    }
+                } else {
+                    if (height > maxDimension) {
+                        width = Math.round((width * maxDimension) / height);
+                        height = maxDimension;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                base64Attachment = canvas.toDataURL('image/jpeg', 0.75);
+
+                const previewImg = document.getElementById('image-preview');
+                const previewContainer = document.getElementById('image-preview-container');
+                previewImg.src = base64Attachment;
+                previewContainer.classList.remove('hidden');
+                document.getElementById('file-label').innerText = file.name;
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeSelectedImage() {
+        base64Attachment = "";
+        document.getElementById('image-input').value = "";
+        document.getElementById('image-preview').src = "";
+        document.getElementById('image-preview-container').classList.add('hidden');
+        document.getElementById('file-label').innerText = 'Attach Image';
+    }
+
+    async function fetchComments() {
+        const listContainer = document.getElementById('comments-list');
+        try {
+            const res = await fetch(WEB_APP_URL);
+            const data = await res.json();
+            
+            listContainer.innerHTML = '';
+            if (!data || data.length === 0) {
+                listContainer.innerHTML = `<p class="text-xs text-gray-500 text-center py-4">No comments yet. Be the first!</p>`;
+                return;
+            }
+
+            data.reverse().forEach(item => {
+                const formattedTime = formatDate(item.timestamp);
+                const attachmentHtml = item.attachment 
+                    ? `<img src="${item.attachment}" class="mt-2 rounded-lg max-h-36 object-cover border border-white/10 shadow-md">` 
+                    : '';
+
+                listContainer.innerHTML += `
+                    <div class="p-3 bg-white/[0.02] border border-white/[0.05] rounded-xl space-y-1">
+                        <div class="flex justify-between items-center text-[10px] text-cyan-400 font-semibold">
+                            <span>${item.name}</span>
+                            <span class="text-gray-500">${formattedTime}</span>
+                        </div>
+                        <p class="text-xs text-gray-300 leading-relaxed break-words">${item.message}</p>
+                        ${attachmentHtml}
+                    </div>
+                `;
+            });
+        } catch (err) {
+            listContainer.innerHTML = `<p class="text-xs text-red-400 text-center py-4">Failed to load comments.</p>`;
+        }
+    }
+
+    async function submitComment(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        btn.innerText = 'Posting...';
+        btn.disabled = true;
+
+        const payload = {
+            name: document.getElementById('user-name').value,
+            message: document.getElementById('user-message').value,
+            attachment: base64Attachment
+        };
+
+        try {
+            await fetch(WEB_APP_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain' },
+                body: JSON.stringify(payload)
+            });
+
+            document.getElementById('comment-form').reset();
+            removeSelectedImage();
+            document.getElementById('char-count').innerText = '0 / 256';
+            
+            btn.innerText = 'Send';
+            btn.disabled = false;
+
+            setTimeout(fetchComments, 1500);
+        } catch (err) {
+            alert("Error sending comment");
+            btn.innerText = 'Send';
+            btn.disabled = false;
+        }
+    }
+
+    // ==========================================
+    // YOUTUBE FEED & MODAL SYSTEM
+    // ==========================================
+    let youtubeDataCache = [];
+
+    async function fetchYoutubeFeed() {
+        const container = document.getElementById('youtube-list-container');
+        try {
+            const res = await fetch(`${WEB_APP_URL}?action=youtube`);
+            const data = await res.json();
+            youtubeDataCache = data;
+
+            container.innerHTML = '';
+            if (!data || data.length === 0) {
+                container.innerHTML = `<p class="text-xs text-gray-500 py-4">No videos available.</p>`;
+                return;
+            }
+
+            data.forEach((item, index) => {
+                const thumbUrl = item.videoId 
+                    ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` 
+                    : 'images/didi1.jpeg';
+
+                container.innerHTML += `
+                    <div onclick="openYoutubeModal(${index})" class="snap-start shrink-0 w-64 md:w-72 aspect-video rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.06] relative group cursor-pointer hover:border-cyan-500/50 transition duration-300">
+                        <img src="${thumbUrl}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        
+                        <!-- Play Overlay Icon -->
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/80 text-black flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.6)] group-hover:scale-110 transition duration-300">
+                                <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+
+                        <!-- Title Info Overlay -->
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 pt-6">
+                            <p class="text-xs font-semibold text-white truncate">${item.title}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        } catch (err) {
+            container.innerHTML = `<p class="text-xs text-red-400 py-4">Failed to load YouTube feed.</p>`;
+        }
+    }
+
+function openYoutubeModal(index) {
+    const video = youtubeDataCache[index];
+    if (!video || !video.videoId) return;
+
+    const modalBox = document.getElementById('modal-container-box');
+    
+    // Daftar Video ID yang khusus berformat Vertikal / Shorts
+    const knownVerticalIds = ['ZGPC4vDEbmQ']; // Tambahkan Video ID vertikal lainnya di sini
+
+    // Cek apakah video berformat vertikal
+    const isShort = video.isVertical || 
+                    (video.link && video.link.includes('/shorts/')) || 
+                    knownVerticalIds.includes(video.videoId);
+
+    if (isShort) {
+        modalBox.classList.add('vertical-mode');
+    } else {
+        modalBox.classList.remove('vertical-mode');
+    }
+
+    document.getElementById('yt-modal-title').innerText = video.title;
+    document.getElementById('yt-modal-description').innerText = video.description || "No description provided.";
+    document.getElementById('yt-modal-iframe').src = `https://www.youtube.com/embed/${video.videoId}?autoplay=1`;
+
+    const modal = document.getElementById('youtube-modal');
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+}
+
+    function closeYoutubeModal() {
+        const modal = document.getElementById('youtube-modal');
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        
+        // Reset src iframe saat modal ditutup
+        document.getElementById('yt-modal-iframe').src = "";
+    }
+
+    // Database Discography
+    const DIDI_DATABASE = [
+        { img: "images/ywtb.jpeg", url: "https://ffm.to/you-were-the-beginning" },
+        { img: "images/rryn.jpeg", url: "https://ffm.to/rivers-remember-your-name" },
+        { img: "images/arht.jpeg", url: "https://ffm.to/arahat" },
+        { img: "images/fl.jpeg",   url: "https://ffm.to/floating-lantern" },
+        { img: "images/sas.jpeg",  url: "https://ffm.to/saber-and-sword" },
+        { img: "images/ltb.png",  url: "https://ffm.to/floating-clouds-in-silence" },
+        { img: "images/ds.png",   url: "https://ffm.to/the-black-horse" },
+        { img: "images/eh.png",   url: "https://ffm.to/boddhisatva-of-the-earth" },
+        { img: "images/ww.jpeg",   url: "https://ffm.to/whispering-wind" },
+        { img: "images/bt.jpeg",   url: "https://ffm.to/boddhi-tree" },
+        { img: "images/bam.jpeg",  url: "https://ffm.to/battlefield-at-midnight" },
+        { img: "images/mh.jpeg",   url: "https://ffm.to/molten-heart" }
+    ];
+
+    const BEHIND_CANVAS_DATABASE = [
+        { img: "images/didi2.jpeg", caption: "Silent Moments — Atmospheric Synthesis", aspect: "aspect-[1/1]" },
+        { img: "images/didi4.jpeg", caption: "Silent Moments — Digital Exploration", aspect: "aspect-[16/10]" },
+        { img: "images/didi5.jpeg", caption: "Silent Moments — Organic Silhouette", aspect: "aspect-[16/10]" },
+        { img: "images/didi3.jpeg", caption: "Silent Moments — Digital Silhouette", aspect: "aspect-[16/10]" },
+        { img: "images/didi8.jpeg", caption: "Silent Moments — Simplicity", aspect: "aspect-[16/10]" },
+        { img: "images/djen1.jpeg", caption: "Collab — Studio Synthesis", aspect: "aspect-[16/10]" },
+        { img: "images/djen2.jpeg", caption: "Collab — Nocturnal", aspect: "aspect-[16/10]" },
+        { img: "images/djen8.jpeg", caption: "Collab — Low Light Architecture", aspect: "aspect-[16/10]" },
+        { img: "images/setup1.jpeg", caption: "Digital Workspace — The Setup", aspect: "aspect-[16/10]" },
+        { img: "images/didi7.jpeg",  caption: "Digital Workspace — Night Shift", aspect: "aspect-[16/10]" }
+    ];
+
+    function toggleBio() {
+        const bio = document.getElementById('expanded-bio');
+        const btn = document.getElementById('read-more-btn');
+        
+        if (bio.style.maxHeight === '0px' || !bio.style.maxHeight) {
+            bio.style.maxHeight = bio.scrollHeight + 'px';
+            bio.style.opacity = '1';
+            btn.innerHTML = `Read less <span id="btn-arrow" class="inline-block transition-transform duration-300 rotate-180">↓</span>`;
+        } else {
+            bio.style.maxHeight = '0px';
+            bio.style.opacity = '0';
+            btn.innerHTML = `Read more <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>`;
+        }
+    }
+
+    function initDidiChungPage() {
+        document.getElementById('release-counter').innerText = `${DIDI_DATABASE.length} Releases`;
+        const gridContainer = document.getElementById('discography-grid');
+        
+        if (DIDI_DATABASE.length > 9) {
+            gridContainer.className = "grid grid-rows-3 grid-flow-col gap-2 overflow-x-auto pb-2 no-scrollbar snap-x";
+        } else {
+            gridContainer.className = "grid grid-cols-3 gap-2";
+        }
+
+        gridContainer.innerHTML = '';
+        DIDI_DATABASE.forEach(track => {
+            const sizeClass = DIDI_DATABASE.length > 9 ? "w-24 md:w-28 snap-start" : "";
+            gridContainer.innerHTML += `
+                <div class="group relative aspect-square rounded-lg overflow-hidden bg-[#0A0A0F] border border-white/[0.04] ${sizeClass}">
+                    <img src="${track.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <a href="${track.url || '#'}" target="_blank" class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <span class="text-[9px] font-bold text-white tracking-widest uppercase">Listen</span>
+                    </a>
+                </div>
+            `;
+        });
+
+        const canvasContainer = document.getElementById('canvas-slider');
+        canvasContainer.innerHTML = '';
+
+        BEHIND_CANVAS_DATABASE.forEach(item => {
+            canvasContainer.innerHTML += `
+                <div class="snap-start shrink-0 w-72 md:w-80 ${item.aspect} rounded-2xl overflow-hidden bg-[#0A0A0F] border border-white/[0.04] relative group">
+                    <img src="${item.img}" alt="${item.caption}" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
+                    <div class="absolute bottom-4 left-4 right-4">
+                        <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">${item.caption}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Fetch feed YouTube dari Apps Script
+        fetchYoutubeFeed();
+    }
+
+    document.addEventListener('DOMContentLoaded', initDidiChungPage);
+
+    function updateCharCount(textarea) {
+        const charCount = document.getElementById('char-count');
+        const currentLength = textarea.value.length;
+        charCount.innerText = `${currentLength} / 256`;
+    }
+
+    function toggleCommentModal() {
+        const modal = document.getElementById('comment-modal');
+        if (modal.classList.contains('opacity-0')) {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+            fetchComments();
+        } else {
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+    }
+    </script>
+</body>
+</html>
