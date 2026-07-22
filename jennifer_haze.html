@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JENNIFER HAZE | Official Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Playfair+Display:ital,wght=1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #050204;
+            overflow-x: hidden;
+        }
+        .serif-quote {
+            font-family: 'Playfair Display', serif;
+        }
+        .premium-glass {
+            background: rgba(14, 8, 12, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(236, 72, 153, 0.15);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .accent-gradient {
+            background: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #d946ef 100%);
+        }
+        #expanded-bio {
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+        }
+        .lava-blob {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+        .lava-top {
+            top: -15%;
+            right: -5%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(236, 72, 153, 0) 70%);
+            filter: blur(65px);
+            opacity: 0.85;
+            animation: lavaMoveTop 17s infinite ease-in-out;
+        }
+        .lava-bottom {
+            bottom: -15%;
+            left: -10%;
+            width: 750px;
+            height: 750px;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.25) 0%, rgba(244, 63, 94, 0) 70%);
+            filter: blur(65px);
+            opacity: 0.8;
+            animation: lavaMoveBottom 19s infinite ease-in-out;
+        }
+        @keyframes lavaMoveTop {
+            0% { transform: translate(0px, 0px) scale(1); }
+            25% { transform: translate(110px, 90px) scale(1.15); }
+            50% { transform: translate(-50px, 150px) scale(0.9); }
+            75% { transform: translate(-130px, 70px) scale(1.1); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        @keyframes lavaMoveBottom {
+            0% { transform: translate(0px, 0px) scale(1); }
+            30% { transform: translate(-90px, -130px) scale(0.85); }
+            60% { transform: translate(130px, -60px) scale(1.2); }
+            80% { transform: translate(30px, -160px) scale(0.95); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        @keyframes profileBreathing {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 50px rgba(236, 72, 153, 0.25);
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 65px rgba(236, 72, 153, 0.45);
+            }
+        }
+        .profile-glow-breathing {
+            animation: profileBreathing 6s infinite ease-in-out;
+        }
+
+        /* Styling Default / Horizontal Video Modal */
+        .modal-box {
+            width: 90%;
+            max-width: 700px;
+            aspect-ratio: 16 / 9;
+            margin: auto;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Styling Khusus Jika Video Vertikal (Shorts) */
+        .modal-box.vertical-mode {
+            max-width: 360px !important;
+            aspect-ratio: 9 / 16 !important;
+            height: 80vh !important;
+            max-height: 650px !important;
+        }
+        /* Modal Container Serba Otomatis */
+        .modal-box-auto {
+            width: min(90vw, 800px);
+            max-height: 85vh;
+            margin: auto;
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-gray-300 min-h-screen flex flex-col justify-between antialiased selection:bg-pink-500/20">
+
+    <div class="lava-blob lava-top"></div>
+    <div class="lava-blob lava-bottom"></div>
+
+    <main class="max-w-4xl w-full mx-auto px-6 md:px-8 flex-grow z-10 pt-20 md:pt-28 space-y-20 mb-20">
+    
+        <!-- HEADER / NAVIGATION -->
+        <header class="fixed top-0 left-0 w-full z-50 bg-[#020204]/40 backdrop-blur-md border-b border-white/[0.02] px-6 py-4">
+            <div class="max-w-6xl mx-auto flex justify-between items-center">
+                <span class="text-xs font-black tracking-[0.4em] text-white uppercase">JENNIFER HAZE</span>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
+                    <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">LAB ACTIVE // 2026</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center border-b border-white/[0.04] pb-16">
+            <div class="md:col-span-8 space-y-6 text-center md:text-left order-2 md:order-1">
+                <div class="space-y-2">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white uppercase">
+                        Jennifer Haze
+                    </h1>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:flex-wrap gap-y-2 gap-x-4 justify-center md:justify-start text-xs md:text-sm tracking-widest font-medium text-pink-400 uppercase">
+                    <span class="flex items-center justify-center md:justify-start gap-2">Artist</span>
+                    <span class="hidden md:inline text-white/20">•</span>
+                    <span class="flex items-center justify-center md:justify-start gap-2">Cold Choir</span>
+                    <span class="hidden md:inline text-white/20">•</span>
+                    <span class="flex items-center justify-center md:justify-start gap-2">Urban Noir</span>
+                </div>
+
+                <div class="space-y-1 pt-1 text-sm text-gray-400 font-light tracking-wide">
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1 h-1 rounded-full bg-rose-400"></span> Dreamy Trip Hop
+                    </p>
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-1 h-1 rounded-full bg-rose-400"></span> Downtempo Ambient
+                    </p>
+                </div>
+
+                <p class="serif-quote text-xl md:text-2xl text-gray-200 italic font-light border-l-2 border-pink-500/50 pl-4 py-1 my-4 text-left">
+                    "The Voice of the Haze."
+                </p>
+
+                <div class="space-y-4">
+                    <button id="read-more-btn" onclick="toggleBio()" class="text-xs font-bold tracking-[0.2em] text-white/60 hover:text-pink-400 uppercase transition duration-300 flex items-center justify-center md:justify-start gap-1 mx-auto md:mx-0">
+                        Read more <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>
+                    </button>
+                    
+                    <div id="expanded-bio" class="max-h-0 opacity-0 overflow-hidden text-sm md:text-base text-gray-400 font-light leading-relaxed space-y-4 text-justify md:text-left">
+                        <p class="pt-2">
+                            Jennifer Haze is less a singer and more a selective atmospheric presence, a voice defined by a signature "Cold Charisma" that thrives only in the spaces between shadows. Her sound exists at a sophisticated intersection of Urban Noir and Dreamy Downtempo, where the weight of a single breath is as intentional and rhythmic as the beat itself.
+                        </p>
+                        <p>
+                            She is a specialist in the haunting, visceral textures of Trip Hop, possessing the rare ability to transmute quiet introspection into a "Velvet Fire." Her vocals do not merely follow a melody; they command a specific kind of electric silence—a frequency where raw, human vulnerability meets the cold precision of industrial echoes.
+                        </p>
+                        <p>
+                            As the definitive spirit of the "Low-Light" sound, Jennifer Haze represents a modern evolution of immersive music. Her performance is a slow burn, a steady pulse felt through the fog of deep bass and metallic resonance. Collaborating exclusively with producer Didi Chung, Jennifer Haze represents a modern evolution of the sound—raw, melodic, and deeply immersive.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-4 flex justify-center md:justify-end order-1 md:order-2">
+                <div class="profile-glow-breathing relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1.5 bg-[#0F080C] border border-pink-500/30 shadow-[0_0_50px_rgba(236,72,153,0.25)] transition-all duration-700 hover:scale-105 hover:shadow-[0_0_60px_rgba(236,72,153,0.45)] group">
+                    <div class="w-full h-full rounded-full overflow-hidden border border-white/[0.08] relative">
+                        <img src="images/jen1.jpeg" alt="Jennifer Haze Profile" class="w-full h-full object-cover rounded-full grayscale-[10%] group-hover:grayscale-0 transition duration-700 ease-out">
+                        <div class="absolute inset-0 border border-pink-500/20 rounded-full pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>            
+        </section>
+
+        <!-- SPOTIFY & DISCOGRAPHY SECTION (Struktur sama dengan index.html) -->
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <!-- LEFT: MAIN SPOTIFY PLAYER -->
+            <div class="md:col-span-7 space-y-4">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-pink-400 uppercase flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span> Latest Sonic Release
+                </h2>
+                <div class="premium-glass p-1.5 rounded-2xl shadow-xl">
+                    <iframe id="main-spotify-iframe" style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <!-- RIGHT: DISCOGRAPHY LIST (HORIZONTAL SCROLL GRID) -->
+            <div class="md:col-span-5 space-y-4 max-w-full overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Discography</h2>
+                    <span id="release-counter" class="text-[9px] text-gray-600 tracking-widest uppercase">0 Releases</span>
+                </div>
+                
+                <div id="discography-grid" class="grid grid-rows-2 grid-flow-col gap-3 overflow-x-auto no-scrollbar max-h-[352px] pb-2">
+                    <!-- Item dimuat via API/JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- YOUTUBE LIST (FROM SPREADSHEET) -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-pink-400 uppercase flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span> Visual & Audio Broadcasts
+                </h2>
+                <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div id="youtube-list-container" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
+                <p class="text-xs text-gray-500 tracking-widest uppercase animate-pulse py-4">Fetching YouTube Feed...</p>
+            </div>
+        </section>
+
+        <!-- ALBUM & EP SECTION -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Album & EP</h2>
+                <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
+            </div>
+            
+            <div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
+                <div class="snap-start shrink-0 w-64 md:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#0F080C] border border-white/[0.04] relative group">
+                    <img src="images/a_me.jpeg" alt="Artwork 1" class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-102">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-5 flex flex-col justify-end">
+                        <span class="text-[9px] font-bold tracking-widest text-pink-400 uppercase mb-1">Album</span>
+                        <h3 class="text-sm font-semibold text-white truncate">Midnight Eyes</h3>
+                    </div>
+                </div>
+                <div class="snap-start shrink-0 w-64 md:w-72 aspect-[4/5] rounded-2xl overflow-hidden bg-[#0F080C] border border-white/[0.04] relative group">
+                    <img src="images/a_bf.jpeg" alt="Artwork 2" class="w-full h-full object-cover transition duration-700 ease-out group-hover:scale-102">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-5 flex flex-col justify-end">
+                        <span class="text-[9px] font-bold tracking-widest text-pink-400 uppercase mb-1">Album</span>
+                        <h3 class="text-sm font-semibold text-white truncate">Beautiful Fragments</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEHIND THE CANVAS SECTION -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Behind The Canvas & Studio</h2>
+                <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
+            </div>
+            <div id="canvas-slider" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"></div>
+        </section>
+
+        <!-- CTA BUTTONS SECTION -->
+        <section class="max-w-md mx-auto space-y-3 pt-4">
+            <a href="https://ffm.bio/jenniferhaze" target="_blank" class="accent-gradient block w-full text-white font-bold py-4 rounded-xl text-xs tracking-[0.2em] text-center uppercase shadow-[0_4px_20px_rgba(236,72,153,0.3)] hover:opacity-90 transition duration-300">
+                Enter the Haze
+            </a>
+            <a href="mailto:jenniferhaze06@gmail.com" class="block w-full bg-white/[0.02] hover:bg-white/[0.04] text-gray-400 hover:text-white border border-white/[0.05] py-4 rounded-xl text-xs font-bold tracking-[0.2em] text-center uppercase transition duration-300">
+                Inquiries & Collaboration
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="w-full border-t border-white/[0.03] bg-[#0A0508]/60 backdrop-blur-md py-10 relative z-10">
+        <div class="max-w-4xl w-full mx-auto px-6 flex flex-col items-center space-y-6">
+            <div class="flex items-center gap-6 md:gap-8 opacity-40 hover:opacity-60 transition duration-300 flex-wrap justify-center">
+                <a href="https://open.spotify.com/artist/49XzVOKlkplvCs9vFn5FGR?si=_WVLpwrERI-9btRSOYAeLQ" target="_blank" class="hover:text-pink-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.306c-.216.354-.677.47-1.03.254-2.816-1.722-6.36-2.113-10.537-1.16a.75.75 0 1 1-.334-1.463c4.573-1.044 8.491-.595 11.648 1.334.353.216.468.677.253 1.035zm1.47-3.26c-.272.443-.855.584-1.298.312-3.224-1.982-8.14-2.558-11.954-1.4c-.497.151-1.02-.136-1.171-.633s.135-1.02.632-1.17c4.364-1.324 9.774-.678 13.48 1.6.443.272.855.413 1.298.312 1.442zm.11-3.376C14.654 8.09 7.37 7.85 3.14 9.133a.937.937 0 1 1-.54-1.79c4.85-1.47 12.895-1.196 18.064 1.874a.937.937 0 0 1-.95 1.616z"/>
+                    </svg>
+                </a>
+                <a href="https://youtube.com/@didichung06" target="_blank" class="hover:text-pink-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>                        
+                </a>
+                <a href="https://instagram.com/didichung_official" target="_blank" class="hover:text-pink-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                    </svg>
+                </a>
+                <a href="https://tiktok.com/@didi.chung" target="_blank" class="hover:text-pink-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a72.69 72.69 0 1 0 40.23 65.11V0h89.15a111.39 111.39 0 0 0 11 41.52A111.89 111.89 0 0 0 376.51 93.4a109.4 109.4 0 0 0 71.49 23.1z"/>
+                    </svg>
+                </a>
+                <a href="https://facebook.com/didichung66" target="_blank" class="hover:text-pink-400 transition">
+                    <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <img src="images/dcp_w.png" alt="DC Photon Logo" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition duration-300">
+                <p class="text-[9px] text-gray-500 tracking-[0.3em] uppercase leading-relaxed">
+                    ℗ 2026 DC PHOTON AUDIO LAB.<br>ALL SYSTEMS REGISTERED.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CORNER TOGGLE BUTTON - RIGHT (DIDI CHUNG) -->
+    <div class="fixed bottom-6 right-6 z-50 group">
+        <a href="index.html" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-cyan-500/30 p-2.5 pr-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-fuchsia-400 hover:scale-105 relative">
+            <span class="absolute inset-0 rounded-full border border-cyan-500/50 animate-ping opacity-70 pointer-events-none"></span>
+            <span class="absolute -inset-1 rounded-full bg-cyan-500/10 blur-md opacity-100 pointer-events-none"></span>
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-cyan-500/60 relative shrink-0 shadow-[0_0_15px_rgba(217,70,239,0.5)] group-hover:shadow-[0_0_20px_rgba(217,70,239,0.8)] transition-all duration-300">
+                <img src="images/didi1.jpeg" alt="Didi Chung Page" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </div>
+            <div class="text-left">
+                <p class="text-[8px] md:text-[9px] text-cyan-400 tracking-widest uppercase font-semibold">Cross Presence</p>
+                <p class="text-xs text-gray-200 font-bold tracking-wide group-hover:text-white transition duration-300">Didi Chung</p>
+            </div>
+        </a>
+    </div>
+
+    <!-- CORNER TOGGLE BUTTON - LEFT (COMMENTS & CRITIQUE) -->
+    <div class="fixed bottom-6 left-6 z-50 group">
+        <button onclick="toggleCommentModal()" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-pink-500/40 p-2.5 px-4 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300 hover:border-pink-400 hover:scale-105 hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] relative">
+            <span class="absolute inset-0 rounded-full border border-pink-500/50 animate-ping opacity-70 pointer-events-none"></span>
+            <span class="absolute -inset-1 rounded-full bg-pink-500/20 blur-md opacity-100 pointer-events-none"></span>
+            
+            <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-400/60 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                <svg class="w-4 h-4 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+            </div>
+            
+            <div class="text-left">
+                <p class="text-[8px] md:text-[9px] text-pink-400 tracking-widest uppercase font-semibold">Feedback</p>
+                <p class="text-xs text-gray-200 font-bold tracking-wide">Comments</p>
+            </div>
+        </button>
+    </div>
+
+    <!-- MODAL BOX: COMMENTS & CRITIQUE -->
+    <div id="comment-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="premium-glass w-full max-w-lg rounded-2xl border border-pink-500/30 p-6 shadow-[0_0_50px_rgba(236,72,153,0.25)] relative flex flex-col max-h-[85vh] bg-[#0d060a]/90">
+            
+            <div class="flex justify-between items-center pb-4 border-b border-pink-500/20">
+                <div>
+                    <h3 class="text-sm font-bold tracking-[0.2em] text-white uppercase flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span> Comments & Critique
+                    </h3>
+                    <p class="text-[10px] text-gray-400 tracking-wider mt-0.5">Leave your thoughts or sound responses</p>
+                </div>
+                <button onclick="toggleCommentModal()" class="text-gray-400 hover:text-pink-400 transition text-2xl font-bold p-1 leading-none">&times;</button>
+            </div>
+
+            <div id="comments-list" class="flex-grow overflow-y-auto py-4 space-y-3 no-scrollbar my-2 max-h-[300px]">
+                <p id="comments-loading" class="text-xs text-pink-400/80 text-center py-6 tracking-widest uppercase animate-pulse">Loading responses...</p>
+            </div>
+
+            <form id="comment-form" onsubmit="submitComment(event)" class="space-y-3 pt-3 border-t border-pink-500/20">
+                <div class="grid grid-cols-1 gap-2">
+                    <input type="text" id="user-name" required placeholder="Your Name / Handle" class="w-full bg-black/60 border border-pink-500/20 rounded-xl px-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition">
+                    
+                    <div class="relative">
+                        <textarea id="user-message" maxlength="256" required oninput="updateCharCount(this)" rows="2" placeholder="Write your feedback (max 256 chars)..." class="w-full bg-black/60 border border-pink-500/20 rounded-xl p-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition resize-none"></textarea>
+                        <span id="char-count" class="absolute bottom-2 right-3 text-[9px] text-gray-500 tracking-widest">0 / 256</span>
+                    </div>
+                </div>
+
+                <div id="image-preview-container" class="hidden relative inline-block">
+                    <img id="image-preview" src="" alt="Preview" class="h-20 w-auto rounded-lg border border-pink-500/40 object-cover shadow-[0_0_10px_rgba(236,72,153,0.2)]">
+                    <button type="button" onclick="removeSelectedImage()" class="absolute -top-2 -right-2 bg-rose-600 hover:bg-rose-700 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shadow-md">&times;</button>
+                </div>
+
+                <div class="flex items-center justify-between gap-2 pt-1">
+                    <label class="cursor-pointer flex items-center gap-2 text-gray-400 hover:text-pink-400 transition bg-black/40 border border-pink-500/20 px-3 py-2 rounded-xl hover:border-pink-400/40">
+                        <svg class="w-4 h-4 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                        </svg>
+                        <span id="file-label" class="text-[10px] font-medium tracking-wider uppercase truncate max-w-[120px]">Attach Image</span>
+                        <input type="file" id="image-input" accept="image/*" onchange="handleImageUpload(event)" class="hidden">
+                    </label>
+
+                    <button type="submit" id="submit-btn" class="accent-gradient text-white font-bold px-5 py-2.5 rounded-xl text-xs tracking-[0.15em] uppercase hover:opacity-90 transition shadow-[0_0_15px_rgba(236,72,153,0.4)] active:scale-95">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL BOX: YOUTUBE VIDEO PLAYER AUTOMATIC -->
+    <div id="youtube-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="modal-container-box" class="modal-box-auto premium-glass rounded-2xl border border-pink-500/30 p-4 shadow-[0_0_50px_rgba(236,72,153,0.25)] relative flex flex-col justify-center items-center bg-[#0d060a]/95">
+            <div class="w-full flex justify-between items-center border-b border-pink-500/20 pb-2 mb-3 shrink-0">
+                <h3 id="yt-modal-title" class="text-xs font-bold text-white truncate max-w-[80%]">Video Title</h3>
+                <button onclick="closeYoutubeModal()" class="text-gray-400 hover:text-pink-400 text-2xl font-bold p-1 leading-none">&times;</button>
+            </div>
+
+            <div class="relative w-full flex items-center justify-center overflow-hidden rounded-xl bg-black">
+                <iframe id="yt-modal-iframe" class="w-full h-[60vh] md:h-[70vh] rounded-xl object-contain" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div id="yt-modal-description" class="w-full text-[11px] text-gray-400 mt-2 max-h-12 overflow-y-auto no-scrollbar font-light"></div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC (STRUKTUR SAMA DENGAN INDEX.HTML, PARAMETER KHUSUS JENNIFER HAZE) -->
+    <script>
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwpTTi5H1o4kqoEbzbojxNHEbOolWpfhIxXxru6jQzrdn572dnt8w5QH8HwYw26rdrlbw/exec"; 
+
+        let base64Attachment = "";
+
+        // Helper untuk mengubah URL Spotify biasa menjadi Embed URL
+        function getSpotifyEmbedUrl(url) {
+            if (!url) return "";
+            return url.replace("open.spotify.com/", "open.spotify.com/embed/");
+        }
+
+        // Fungsi utama mengambil data Spotify khusus Jennifer Haze
+        async function loadSpotifyData() {
+            const counterEl = document.getElementById("release-counter");
+            const gridEl = document.getElementById("discography-grid");
+            const iframeEl = document.getElementById("main-spotify-iframe");
+
+            if (!gridEl || !iframeEl) return;
+
+            try {
+                // Mengambil data dengan parameter channel=jenniferhaze
+                const response = await fetch(`${WEB_APP_URL}?action=spotify&channel=jenniferhaze`);
+                const data = await response.json();
+
+                if (!data || data.length === 0) {
+                    if (counterEl) counterEl.textContent = "0 Releases";
+                    gridEl.innerHTML = `<p class="text-xs text-gray-500">Belum ada rilis.</p>`;
+                    return;
+                }
+
+                if (counterEl) {
+                    counterEl.textContent = `${data.length} Release${data.length > 1 ? 's' : ''}`;
+                }
+
+                // Set Rilis Pertama ke Main Player
+                iframeEl.src = getSpotifyEmbedUrl(data[0].spotifyUrl);
+
+                // Render Discography dengan Tampilan Card Horizontal Scroll khas Jennifer Haze
+                gridEl.innerHTML = data.map((item, index) => {
+                    const cover = item.coverUrl || "https://via.placeholder.com/150?text=No+Cover";
+                    const isFirst = index === 0;
+
+                    return `
+                        <div 
+                          onclick="playSpotifyTrack('${item.spotifyUrl}', this)"
+                          class="discography-card flex-shrink-0 w-36 h-[162px] cursor-pointer group rounded-xl p-2 bg-white/5 border border-white/5 hover:bg-white/10 hover:border-pink-500/40 transition-all flex flex-col justify-between ${isFirst ? 'border-pink-500/50 bg-pink-500/10' : ''}"
+                        >
+                          <div class="relative w-full aspect-square rounded-lg overflow-hidden shadow-md">
+                            <img src="${cover}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                              <svg class="w-6 h-6 text-pink-400 drop-shadow-md" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="mt-1">
+                            <h3 class="text-[11px] font-medium text-gray-200 truncate group-hover:text-pink-400 transition-colors">${item.title}</h3>
+                            <p class="text-[9px] text-gray-500">${item.released || 'Single'}</p>
+                          </div>
+                        </div>
+                    `;
+                }).join("");
+
+            } catch (error) {
+                console.error("Gagal memuat data Spotify Jennifer Haze:", error);
+                if (counterEl) counterEl.textContent = "Error";
+                gridEl.innerHTML = `<p class="text-xs text-rose-400">Gagal memuat discography.</p>`;
+            }
+        }
+
+        // Handler saat salah satu card discography diklik
+        function playSpotifyTrack(spotifyUrl, cardElement) {
+            const iframeEl = document.getElementById("main-spotify-iframe");
+            if (!iframeEl) return;
+
+            iframeEl.src = getSpotifyEmbedUrl(spotifyUrl);
+
+            document.querySelectorAll(".discography-card").forEach(el => {
+                el.classList.remove("border-pink-500/50", "bg-pink-500/10");
+            });
+            if (cardElement) {
+                cardElement.classList.add("border-pink-500/50", "bg-pink-500/10");
+            }
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const d = new Date(dateString);
+            if (isNaN(d.getTime())) return dateString;
+
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            const hours = String(d.getHours()).padStart(2, '0');
+            const minutes = String(d.getMinutes()).padStart(2, '0');
+
+            return `${day}/${month}/${year} ${hours}:${minutes}`;
+        }
+
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+                    const maxDimension = 640;
+
+                    if (width > height) {
+                        if (width > maxDimension) {
+                            height = Math.round((height * maxDimension) / width);
+                            width = maxDimension;
+                        }
+                    } else {
+                        if (height > maxDimension) {
+                            width = Math.round((width * maxDimension) / height);
+                            height = maxDimension;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    base64Attachment = canvas.toDataURL('image/jpeg', 0.75);
+
+                    const previewImg = document.getElementById('image-preview');
+                    const previewContainer = document.getElementById('image-preview-container');
+                    previewImg.src = base64Attachment;
+                    previewContainer.classList.remove('hidden');
+                    document.getElementById('file-label').innerText = file.name;
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeSelectedImage() {
+            base64Attachment = "";
+            document.getElementById('image-input').value = "";
+            document.getElementById('image-preview').src = "";
+            document.getElementById('image-preview-container').classList.add('hidden');
+            document.getElementById('file-label').innerText = 'Attach Image';
+        }
+
+        async function fetchComments() {
+            const listContainer = document.getElementById('comments-list');
+            try {
+                const res = await fetch(WEB_APP_URL);
+                const data = await res.json();
+                
+                listContainer.innerHTML = '';
+                if (!data || data.length === 0) {
+                    listContainer.innerHTML = `<p class="text-xs text-gray-500 text-center py-4">No comments yet. Be the first!</p>`;
+                    return;
+                }
+
+                data.reverse().forEach(item => {
+                    const formattedTime = formatDate(item.timestamp);
+                    const attachmentHtml = item.attachment 
+                        ? `<img src="${item.attachment}" class="mt-2 rounded-lg max-h-36 object-cover border border-pink-500/20 shadow-md">` 
+                        : '';
+
+                    listContainer.innerHTML += `
+                        <div class="p-3 bg-pink-950/20 border border-pink-500/10 rounded-xl space-y-1 hover:border-pink-500/30 transition">
+                            <div class="flex justify-between items-center text-[10px] text-pink-400 font-semibold">
+                                <span>${item.name}</span>
+                                <span class="text-gray-500">${formattedTime}</span>
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed break-words">${item.message}</p>
+                            ${attachmentHtml}
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                listContainer.innerHTML = `<p class="text-xs text-rose-400 text-center py-4">Failed to load comments.</p>`;
+            }
+        }
+
+        async function submitComment(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerText = 'Posting...';
+            btn.disabled = true;
+
+            const payload = {
+                name: document.getElementById('user-name').value,
+                message: document.getElementById('user-message').value,
+                attachment: base64Attachment
+            };
+
+            try {
+                await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(payload)
+                });
+
+                document.getElementById('comment-form').reset();
+                removeSelectedImage();
+                document.getElementById('char-count').innerText = '0 / 256';
+                
+                btn.innerText = 'Send';
+                btn.disabled = false;
+
+                setTimeout(fetchComments, 1500);
+            } catch (err) {
+                alert("Error sending comment");
+                btn.innerText = 'Send';
+                btn.disabled = false;
+            }
+        }
+
+        // YOUTUBE FEED & MODAL SYSTEM
+        let youtubeDataCache = [];
+
+        async function fetchYoutubeFeed() {
+            const container = document.getElementById('youtube-list-container');
+            try {
+                const res = await fetch(`${WEB_APP_URL}?action=youtube&channel=jenniferhaze`);
+                const data = await res.json();
+                youtubeDataCache = data;
+
+                container.innerHTML = '';
+                if (!data || data.length === 0) {
+                    container.innerHTML = `<p class="text-xs text-gray-500 py-4">No videos available.</p>`;
+                    return;
+                }
+
+                data.forEach((item, index) => {
+                    const thumbUrl = item.videoId 
+                        ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` 
+                        : 'images/jen1.jpeg';
+
+                    container.innerHTML += `
+                        <div onclick="openYoutubeModal(${index})" class="snap-start shrink-0 w-64 md:w-72 aspect-video rounded-2xl overflow-hidden bg-[#0F080C] border border-white/[0.06] relative group cursor-pointer hover:border-pink-500/50 transition duration-300">
+                            <img src="${thumbUrl}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                                <div class="w-10 h-10 rounded-full bg-pink-500/80 text-white flex items-center justify-center shadow-[0_0_20px_rgba(236,72,153,0.6)] group-hover:scale-110 transition duration-300">
+                                    <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 pt-6">
+                                <p class="text-xs font-semibold text-white truncate">${item.title}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                container.innerHTML = `<p class="text-xs text-rose-400 py-4">Failed to load YouTube feed.</p>`;
+            }
+        }
+
+        function openYoutubeModal(index) {
+            const video = youtubeDataCache[index];
+            if (!video || !video.videoId) return;
+
+            document.getElementById('yt-modal-title').innerText = video.title;
+            document.getElementById('yt-modal-description').innerText = video.description || "";
+            document.getElementById('yt-modal-iframe').src = `https://www.youtube.com/embed/${video.videoId}?autoplay=1`;
+
+            const modal = document.getElementById('youtube-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+        }
+
+        function closeYoutubeModal() {
+            const modal = document.getElementById('youtube-modal');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            
+            document.getElementById('yt-modal-iframe').src = "";
+        }
+
+        const BEHIND_CANVAS_DATABASE = [
+            { img: "images/jen3.jpeg", caption: "Closed Eyes, Open Heart", aspect: "aspect-[1/1]" },
+            { img: "images/jen2.jpeg", caption: "Into the Haze", aspect: "aspect-[16/10]" },
+            { img: "images/jen4.jpeg", caption: "Noir Reflection", aspect: "aspect-[16/10]" },
+            { img: "images/jen5.jpeg", caption: "Lost in the Sound", aspect: "aspect-[16/10]" },
+            { img: "images/jen6.jpeg", caption: "Unbreakable Silence", aspect: "aspect-[16/10]" },
+            { img: "images/djen10.jpeg", caption: "Between Two Worlds", aspect: "aspect-[16/10]" },
+            { img: "images/djen3.jpeg", caption: "Different Directions", aspect: "aspect-[16/10]" },
+            { img: "images/djen7.jpeg", caption: "Silent Horizon", aspect: "aspect-[16/10]" }
+        ];
+
+        function toggleBio() {
+            const bio = document.getElementById('expanded-bio');
+            const btn = document.getElementById('read-more-btn');
+            
+            if (bio.style.maxHeight === '0px' || !bio.style.maxHeight) {
+                bio.style.maxHeight = bio.scrollHeight + 'px';
+                bio.style.opacity = '1';
+                btn.innerHTML = `Read less <span id="btn-arrow" class="inline-block transition-transform duration-300 rotate-180">↓</span>`;
+            } else {
+                bio.style.maxHeight = '0px';
+                bio.style.opacity = '0';
+                btn.innerHTML = `Read more <span id="btn-arrow" class="inline-block transition-transform duration-300">↓</span>`;
+            }
+        }
+
+        function initJenniferHazePage() {
+            // Memuat data Spotify Jennifer Haze dari Apps Script
+            loadSpotifyData();
+
+            // Render galeri Behind The Canvas
+            const canvasContainer = document.getElementById('canvas-slider');
+            if (canvasContainer) {
+                canvasContainer.innerHTML = '';
+                BEHIND_CANVAS_DATABASE.forEach(item => {
+                    canvasContainer.innerHTML += `
+                        <div class="snap-start shrink-0 w-72 md:w-80 ${item.aspect} rounded-2xl overflow-hidden bg-[#0F080C] border border-white/[0.04] relative group">
+                            <img src="${item.img}" alt="${item.caption}" class="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-100 group-hover:grayscale-0 transition duration-700 ease-out">
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <p class="text-[10px] tracking-wider text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-md inline-block">${item.caption}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            // Fetch feed YouTube khusus Jennifer Haze
+            fetchYoutubeFeed();
+        }
+
+        function updateCharCount(textarea) {
+            const charCount = document.getElementById('char-count');
+            const currentLength = textarea.value.length;
+            charCount.innerText = `${currentLength} / 256`;
+        }
+
+        function toggleCommentModal() {
+            const modal = document.getElementById('comment-modal');
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                fetchComments();
+            } else {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initJenniferHazePage);
+    </script>
+</body>
+</html>
