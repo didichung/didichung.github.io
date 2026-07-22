@@ -88,6 +88,30 @@
         .profile-glow-breathing {
             animation: profileBreathing 6s infinite ease-in-out;
         }
+
+/* Styling Default / Horizontal Video Modal */
+.modal-box {
+    width: 90%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9;
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Styling Khusus Jika Video Vertikal (Shorts) */
+.modal-box.vertical-mode {
+    max-width: 360px !important;
+    aspect-ratio: 9 / 16 !important;
+    height: 80vh !important;
+    max-height: 650px !important;
+}
+/* Modal Container Serba Otomatis */
+.modal-box-auto {
+    width: min(90vw, 800px); /* Maksimal lebar 800px atau 90% layar HP */
+    max-height: 85vh;        /* Supaya tidak melebihi tinggi layar */
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+}
     </style>
 </head>
 <body class="text-gray-300 min-h-screen flex flex-col justify-between antialiased selection:bg-pink-500/20">
@@ -108,6 +132,7 @@
             </div>
         </header>
 
+        <!-- HERO SECTION -->
         <section class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center border-b border-white/[0.04] pb-16">
             <div class="md:col-span-8 space-y-6 text-center md:text-left order-2 md:order-1">
                 <div class="space-y-2">
@@ -166,6 +191,7 @@
             </div>            
         </section>
 
+        <!-- SPOTIFY & DISCOGRAPHY SECTION -->
         <section class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div class="md:col-span-7 space-y-4">
                 <h2 class="text-[10px] font-bold tracking-[0.2em] text-pink-400 uppercase flex items-center gap-2">
@@ -185,6 +211,24 @@
             </div>
         </section>
 
+        <!-- ========================================== -->
+        <!-- YOUTUBE LIST (FROM SPREADSHEET) -->
+        <!-- ========================================== -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-[10px] font-bold tracking-[0.2em] text-pink-400 uppercase flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span> Visual & Audio Broadcasts
+                </h2>
+                <span class="text-[9px] text-gray-600 tracking-widest uppercase hidden sm:inline">Scroll Horizontal →</span>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div id="youtube-list-container" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory">
+                <p class="text-xs text-gray-500 tracking-widest uppercase animate-pulse py-4">Fetching YouTube Feed...</p>
+            </div>
+        </section>
+
+        <!-- ALBUM & EP SECTION -->
         <section class="space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Album & EP</h2>
@@ -209,6 +253,7 @@
             </div>
         </section>
 
+        <!-- BEHIND THE CANVAS SECTION -->
         <section class="space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-[10px] font-bold tracking-[0.2em] text-gray-500 uppercase">Behind The Canvas & Studio</h2>
@@ -217,6 +262,7 @@
             <div id="canvas-slider" class="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"></div>
         </section>
 
+        <!-- CTA BUTTONS SECTION -->
         <section class="max-w-md mx-auto space-y-3 pt-4">
             <a href="https://ffm.bio/jenniferhaze" target="_blank" class="accent-gradient block w-full text-white font-bold py-4 rounded-xl text-xs tracking-[0.2em] text-center uppercase shadow-[0_4px_20px_rgba(236,72,153,0.3)] hover:opacity-90 transition duration-300">
                 Enter the Haze
@@ -228,6 +274,7 @@
 
     </main>
 
+    <!-- FOOTER SECTION -->
     <footer class="w-full border-t border-white/[0.03] bg-[#0A0508]/60 backdrop-blur-md py-10 relative z-10">
         <div class="max-w-4xl w-full mx-auto px-6 flex flex-col items-center space-y-6">
             <div class="flex items-center gap-6 md:gap-8 opacity-40 hover:opacity-60 transition duration-300 flex-wrap justify-center">
@@ -269,14 +316,14 @@
 
     <!-- CORNER TOGGLE BUTTON - RIGHT (DIDI CHUNG) -->
     <div class="fixed bottom-6 right-6 z-50 group">
-        <a href="index.html" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-fuchsia-500/30 p-2.5 pr-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-fuchsia-400 hover:scale-105 relative">
-            <span class="absolute inset-0 rounded-full border border-fuchsia-500/50 animate-ping opacity-70 pointer-events-none"></span>
-            <span class="absolute -inset-1 rounded-full bg-fuchsia-500/10 blur-md opacity-100 pointer-events-none"></span>
-            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-fuchsia-500/60 relative shrink-0 shadow-[0_0_15px_rgba(217,70,239,0.5)] group-hover:shadow-[0_0_20px_rgba(217,70,239,0.8)] transition-all duration-300">
-                <img src="images/didi1.jpeg" alt="Jennifer Haze Page" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+        <a href="index.html" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-cyan-500/30 p-2.5 pr-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-fuchsia-400 hover:scale-105 relative">
+            <span class="absolute inset-0 rounded-full border border-cyan-500/50 animate-ping opacity-70 pointer-events-none"></span>
+            <span class="absolute -inset-1 rounded-full bg-cyan-500/10 blur-md opacity-100 pointer-events-none"></span>
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-cyan-500/60 relative shrink-0 shadow-[0_0_15px_rgba(217,70,239,0.5)] group-hover:shadow-[0_0_20px_rgba(217,70,239,0.8)] transition-all duration-300">
+                <img src="images/didi1.jpeg" alt="Didi Chung Page" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
             </div>
             <div class="text-left">
-                <p class="text-[8px] md:text-[9px] text-pink-400 tracking-widest uppercase font-semibold">Cross Presence</p>
+                <p class="text-[8px] md:text-[9px] text-cyan-400 tracking-widest uppercase font-semibold">Cross Presence</p>
                 <p class="text-xs text-gray-200 font-bold tracking-wide group-hover:text-white transition duration-300">Didi Chung</p>
             </div>
         </a>
@@ -350,6 +397,30 @@
             </form>
         </div>
     </div>
+
+<!-- ========================================== -->
+<!-- MODAL BOX: YOUTUBE VIDEO PLAYER AUTOMATIC -->
+<!-- ========================================== -->
+<div id="youtube-modal" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+    
+    <div id="modal-container-box" class="modal-box-auto premium-glass rounded-2xl border border-pink-500/30 p-4 shadow-[0_0_50px_rgba(236,72,153,0.25)] relative flex flex-col justify-center items-center bg-[#0d060a]/95">
+        
+        <!-- Header / Close Button -->
+        <div class="w-full flex justify-between items-center border-b border-pink-500/20 pb-2 mb-3 shrink-0">
+            <h3 id="yt-modal-title" class="text-xs font-bold text-white truncate max-w-[80%]">Video Title</h3>
+            <button onclick="closeYoutubeModal()" class="text-gray-400 hover:text-pink-400 text-2xl font-bold p-1 leading-none">&times;</button>
+        </div>
+
+        <!-- Player Container (Menyesuaikan Otomatis) -->
+        <div class="relative w-full flex items-center justify-center overflow-hidden rounded-xl bg-black">
+            <iframe id="yt-modal-iframe" class="w-full h-[60vh] md:h-[70vh] rounded-xl object-contain" src="" title="YouTube Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- Description (Optional / Auto Hide kalau kepanjangan) -->
+        <div id="yt-modal-description" class="w-full text-[11px] text-gray-400 mt-2 max-h-12 overflow-y-auto no-scrollbar font-light"></div>
+
+    </div>
+</div>
 
     <!-- JAVASCRIPT -->
     <script>
@@ -491,6 +562,77 @@
             }
         }
 
+        // ==========================================
+        // YOUTUBE FEED & MODAL SYSTEM
+        // ==========================================
+        let youtubeDataCache = [];
+
+async function fetchYoutubeFeed() {
+    const container = document.getElementById('youtube-list-container');
+    try {
+        // Mengirim action=youtube DAN channel=jenniferhaze sesuai logika GAS
+        const res = await fetch(`${WEB_APP_URL}?action=youtube&channel=jenniferhaze`);
+        const data = await res.json();
+        youtubeDataCache = data;
+
+        container.innerHTML = '';
+        if (!data || data.length === 0) {
+            container.innerHTML = `<p class="text-xs text-gray-500 py-4">No videos available.</p>`;
+            return;
+        }
+
+        data.forEach((item, index) => {
+            const thumbUrl = item.videoId 
+                ? `https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg` 
+                : 'images/jen1.jpeg';
+
+            container.innerHTML += `
+                <div onclick="openYoutubeModal(${index})" class="snap-start shrink-0 w-64 md:w-72 aspect-video rounded-2xl overflow-hidden bg-[#0F080C] border border-white/[0.06] relative group cursor-pointer hover:border-pink-500/50 transition duration-300">
+                    <img src="${thumbUrl}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    
+                    <!-- Play Overlay Icon -->
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
+                        <div class="w-10 h-10 rounded-full bg-pink-500/80 text-white flex items-center justify-center shadow-[0_0_20px_rgba(236,72,153,0.6)] group-hover:scale-110 transition duration-300">
+                            <svg class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Title Info Overlay -->
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 pt-6">
+                        <p class="text-xs font-semibold text-white truncate">${item.title}</p>
+                    </div>
+                </div>
+            `;
+        });
+    } catch (err) {
+        container.innerHTML = `<p class="text-xs text-rose-400 py-4">Failed to load YouTube feed.</p>`;
+    }
+}
+
+function openYoutubeModal(index) {
+    const video = youtubeDataCache[index];
+    if (!video || !video.videoId) return;
+
+    // Set Judul, Deskripsi & URL Embed
+    document.getElementById('yt-modal-title').innerText = video.title;
+    document.getElementById('yt-modal-description').innerText = video.description || "";
+    document.getElementById('yt-modal-iframe').src = `https://www.youtube.com/embed/${video.videoId}?autoplay=1`;
+
+    // Tampilkan Modal
+    const modal = document.getElementById('youtube-modal');
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+}
+
+        function closeYoutubeModal() {
+            const modal = document.getElementById('youtube-modal');
+            modal.classList.remove('opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            
+            // Reset src iframe saat modal ditutup
+            document.getElementById('yt-modal-iframe').src = "";
+        }
+
         const JEN_DATABASE = [
             { img: "images/ll.jpeg", url: "#" },
             { img: "images/wmc.jpeg", url: "#" },
@@ -571,6 +713,9 @@
                     </div>
                 `;
             });
+
+            // Fetch feed YouTube dari Apps Script
+            fetchYoutubeFeed();
         }
 
         function updateCharCount(textarea) {
