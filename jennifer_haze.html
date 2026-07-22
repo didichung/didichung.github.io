@@ -15,32 +15,25 @@
         .serif-quote {
             font-family: 'Playfair Display', serif;
         }
-        /* Custom Premium Glassmorphism */
         .premium-glass {
-            background: rgba(14, 8, 12, 0.4);
+            background: rgba(14, 8, 12, 0.6);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(236, 72, 153, 0.15);
         }
-        /* Hide scrollbar for Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
-        /* Hide scrollbar for IE, Edge and Firefox */
         .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-        /* Smooth glowing accent Magenta */
         .accent-gradient {
             background: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #d946ef 100%);
         }
-        /* Smooth height transition for Read More expander */
         #expanded-bio {
             transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
         }
-
-        /* Pure CSS Lava Lamp Glow System - MORE DYNAMIC MOVEMENT */
         .lava-blob {
             position: fixed;
             border-radius: 50%;
@@ -48,7 +41,6 @@
             z-index: 0;
             mix-blend-mode: screen;
         }
-        
         .lava-top {
             top: -15%;
             right: -5%;
@@ -59,7 +51,6 @@
             opacity: 0.85;
             animation: lavaMoveTop 17s infinite ease-in-out;
         }
-
         .lava-bottom {
             bottom: -15%;
             left: -10%;
@@ -70,7 +61,6 @@
             opacity: 0.8;
             animation: lavaMoveBottom 19s infinite ease-in-out;
         }
-
         @keyframes lavaMoveTop {
             0% { transform: translate(0px, 0px) scale(1); }
             25% { transform: translate(110px, 90px) scale(1.15); }
@@ -78,7 +68,6 @@
             75% { transform: translate(-130px, 70px) scale(1.1); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
-
         @keyframes lavaMoveBottom {
             0% { transform: translate(0px, 0px) scale(1); }
             30% { transform: translate(-90px, -130px) scale(0.85); }
@@ -86,13 +75,10 @@
             80% { transform: translate(30px, -160px) scale(0.95); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
-
-        /* --- NEW UPDATED ANIMATIONS --- */
-        /* Smooth Breathing Effect for Profile Container */
         @keyframes profileBreathing {
             0%, 100% {
                 transform: scale(1);
-                shadow: 0 0 50px rgba(236, 72, 153, 0.25);
+                box-shadow: 0 0 50px rgba(236, 72, 153, 0.25);
             }
             50% {
                 transform: scale(1.03);
@@ -101,23 +87,6 @@
         }
         .profile-glow-breathing {
             animation: profileBreathing 6s infinite ease-in-out;
-        }
-
-        /* Multi-layered Ping Effects for Floating Button */
-        @keyframes pingLayer1 {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.4); opacity: 0; }
-        }
-        @keyframes pingLayer2 {
-            0% { transform: scale(1); opacity: 0.3; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
-        .animate-ping-1 {
-            animation: pingLayer1 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-        .animate-ping-2 {
-            animation: pingLayer2 3s cubic-bezier(0, 0, 0.2, 1) infinite;
-            animation-delay: 1.5s;
         }
     </style>
 </head>
@@ -128,16 +97,16 @@
 
     <main class="max-w-4xl w-full mx-auto px-6 md:px-8 flex-grow z-10 pt-20 md:pt-28 space-y-20 mb-20">
     
-    <!-- HEADER / NAVIGATION -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#020204]/40 backdrop-blur-md border-b border-white/[0.02] px-6 py-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <span class="text-xs font-black tracking-[0.4em] text-white uppercase">JENNIFER HAZE</span>
-            <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
-                <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">LAB ACTIVE // 2026</span>
+        <!-- HEADER / NAVIGATION -->
+        <header class="fixed top-0 left-0 w-full z-50 bg-[#020204]/40 backdrop-blur-md border-b border-white/[0.02] px-6 py-4">
+            <div class="max-w-6xl mx-auto flex justify-between items-center">
+                <span class="text-xs font-black tracking-[0.4em] text-white uppercase">JENNIFER HAZE</span>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span>
+                    <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase">LAB ACTIVE // 2026</span>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
         <section class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center border-b border-white/[0.04] pb-16">
             <div class="md:col-span-8 space-y-6 text-center md:text-left order-2 md:order-1">
@@ -187,7 +156,6 @@
                 </div>
             </div>
             
-<!-- Profile Frame Updated with Smooth Breathing Animation -->
             <div class="md:col-span-4 flex justify-center md:justify-end order-1 md:order-2">
                 <div class="profile-glow-breathing relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1.5 bg-[#0F080C] border border-pink-500/30 shadow-[0_0_50px_rgba(236,72,153,0.25)] transition-all duration-700 hover:scale-105 hover:shadow-[0_0_60px_rgba(236,72,153,0.45)] group">
                     <div class="w-full h-full rounded-full overflow-hidden border border-white/[0.08] relative">
@@ -262,33 +230,27 @@
 
     <footer class="w-full border-t border-white/[0.03] bg-[#0A0508]/60 backdrop-blur-md py-10 relative z-10">
         <div class="max-w-4xl w-full mx-auto px-6 flex flex-col items-center space-y-6">
-            
             <div class="flex items-center gap-6 md:gap-8 opacity-40 hover:opacity-60 transition duration-300 flex-wrap justify-center">
-                
                 <a href="https://open.spotify.com/artist/49XzVOKlkplvCs9vFn5FGR?si=_WVLpwrERI-9btRSOYAeLQ" target="_blank" class="hover:text-pink-400 transition">
                     <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.503 17.306c-.216.354-.677.47-1.03.254-2.816-1.722-6.36-2.113-10.537-1.16a.75.75 0 1 1-.334-1.463c4.573-1.044 8.491-.595 11.648 1.334.353.216.468.677.253 1.035zm1.47-3.26c-.272.443-.855.584-1.298.312-3.224-1.982-8.14-2.558-11.954-1.4c-.497.151-1.02-.136-1.171-.633s.135-1.02.632-1.17c4.364-1.324 9.774-.678 13.48 1.6.443.272.855.413 1.298.312 1.442zm.11-3.376C14.654 8.09 7.37 7.85 3.14 9.133a.937.937 0 1 1-.54-1.79c4.85-1.47 12.895-1.196 18.064 1.874a.937.937 0 0 1-.95 1.616z"/>
                     </svg>
                 </a>
-
                 <a href="https://youtube.com/@didichung06" target="_blank" class="hover:text-pink-400 transition">
                     <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>                        
                 </a>
-
                 <a href="https://instagram.com/didichung_official" target="_blank" class="hover:text-pink-400 transition">
                     <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 0.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
                     </svg>
                 </a>
-
                 <a href="https://tiktok.com/@didi.chung" target="_blank" class="hover:text-pink-400 transition">
                     <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
                         <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a72.69 72.69 0 1 0 40.23 65.11V0h89.15a111.39 111.39 0 0 0 11 41.52A111.89 111.89 0 0 0 376.51 93.4a109.4 109.4 0 0 0 71.49 23.1z"/>
                     </svg>
                 </a>
-
                 <a href="https://facebook.com/didichung66" target="_blank" class="hover:text-pink-400 transition">
                     <svg class="h-7 w-auto fill-current text-white hover:text-pink-400 transition" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -297,43 +259,238 @@
             </div>
 
             <div class="flex items-center gap-4">
-                    <img src="images/dcp_w.png" alt="DC Photon Logo" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition duration-300">
-                    <p class="text-[9px] text-gray-500 tracking-[0.3em] uppercase leading-relaxed">
-                        ℗ 2026 DC PHOTON AUDIO LAB.<br>ALL SYSTEMS REGISTERED.
-                    </p>
-                </div>
+                <img src="images/dcp_w.png" alt="DC Photon Logo" class="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition duration-300">
+                <p class="text-[9px] text-gray-500 tracking-[0.3em] uppercase leading-relaxed">
+                    ℗ 2026 DC PHOTON AUDIO LAB.<br>ALL SYSTEMS REGISTERED.
+                </p>
+            </div>
         </div>
     </footer>
 
-    <!-- CORNER TOGGLE BUTTON (AUTOPULSE RING & AMBIENT GLOW ON INITIAL LOAD) -->
-<div class="fixed bottom-6 right-6 z-50 group">
-    <!-- Mengubah border-cyan-500/30 menjadi border-fuchsia-500/30 dan hover:border-fuchsia-400 -->
-    <a href="index.html" class="flex items-center gap-4 bg-black/90 backdrop-blur-md border border-fuchsia-500/30 p-2.5 pr-5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-fuchsia-400 hover:scale-105 relative">
-        
-        <!-- Animated Glowing Outer Circle (Selalu Berpendar Aktif) -->
-        <!-- Mengubah border-cyan-500/50 menjadi border-fuchsia-500/50 -->
-        <span class="absolute inset-0 rounded-full border border-fuchsia-500/50 animate-ping opacity-70 pointer-events-none"></span>
-        
-        <!-- Aura Glow Ambient Belakang (Selalu Menyala) -->
-        <!-- Mengubah bg-cyan-500/10 menjadi bg-fuchsia-500/10 -->
-        <span class="absolute -inset-1 rounded-full bg-fuchsia-500/10 blur-md opacity-100 pointer-events-none"></span>
-        
-        <!-- Avatar Container with Active Magenta Ring -->
-        <!-- Mengubah border-cyan-500/60 menjadi border-fuchsia-500/60 -->
-        <!-- Mengubah rgba cyan (6,182,212) menjadi rgba fuchsia/magenta (217,70,239) pada efek shadow -->
-        <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-fuchsia-500/60 relative shrink-0 shadow-[0_0_15px_rgba(217,70,239,0.5)] group-hover:shadow-[0_0_20px_rgba(217,70,239,0.8)] transition-all duration-300">
-            <img src="images/didi1.jpeg" alt="Jennifer Haze Page" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-        </div>
-<!-- Text Info -->
-            <div class="text-left hidden sm:block">
-                <p class="text-[9px] text-pink-400 tracking-widest uppercase font-semibold">Cross Presence</p>
+    <!-- CORNER TOGGLE BUTTON - RIGHT (DIDI CHUNG) -->
+    <div class="fixed bottom-6 right-6 z-50 group">
+        <a href="index.html" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-fuchsia-500/30 p-2.5 pr-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-fuchsia-400 hover:scale-105 relative">
+            <span class="absolute inset-0 rounded-full border border-fuchsia-500/50 animate-ping opacity-70 pointer-events-none"></span>
+            <span class="absolute -inset-1 rounded-full bg-fuchsia-500/10 blur-md opacity-100 pointer-events-none"></span>
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden border-2 border-fuchsia-500/60 relative shrink-0 shadow-[0_0_15px_rgba(217,70,239,0.5)] group-hover:shadow-[0_0_20px_rgba(217,70,239,0.8)] transition-all duration-300">
+                <img src="images/didi1.jpeg" alt="Jennifer Haze Page" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </div>
+            <div class="text-left">
+                <p class="text-[8px] md:text-[9px] text-pink-400 tracking-widest uppercase font-semibold">Cross Presence</p>
                 <p class="text-xs text-gray-200 font-bold tracking-wide group-hover:text-white transition duration-300">Didi Chung</p>
             </div>
         </a>
     </div>
 
+    <!-- CORNER TOGGLE BUTTON - LEFT (COMMENTS & CRITIQUE) -->
+    <div class="fixed bottom-6 left-6 z-50 group">
+        <button onclick="toggleCommentModal()" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-pink-500/40 p-2.5 px-4 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300 hover:border-pink-400 hover:scale-105 hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] relative">
+            <span class="absolute inset-0 rounded-full border border-pink-500/50 animate-ping opacity-70 pointer-events-none"></span>
+            <span class="absolute -inset-1 rounded-full bg-pink-500/20 blur-md opacity-100 pointer-events-none"></span>
+            
+            <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-400/60 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                <svg class="w-4 h-4 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+            </div>
+            
+            <div class="text-left">
+                <p class="text-[8px] md:text-[9px] text-pink-400 tracking-widest uppercase font-semibold">Feedback</p>
+                <p class="text-xs text-gray-200 font-bold tracking-wide">Comments</p>
+            </div>
+        </button>
+    </div>
+
+    <!-- MODAL BOX: COMMENTS & CRITIQUE -->
+    <div id="comment-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="premium-glass w-full max-w-lg rounded-2xl border border-pink-500/30 p-6 shadow-[0_0_50px_rgba(236,72,153,0.25)] relative flex flex-col max-h-[85vh] bg-[#0d060a]/90">
+            
+            <div class="flex justify-between items-center pb-4 border-b border-pink-500/20">
+                <div>
+                    <h3 class="text-sm font-bold tracking-[0.2em] text-white uppercase flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-pink-400 animate-pulse"></span> Comments & Critique
+                    </h3>
+                    <p class="text-[10px] text-gray-400 tracking-wider mt-0.5">Leave your thoughts or sound responses</p>
+                </div>
+                <button onclick="toggleCommentModal()" class="text-gray-400 hover:text-pink-400 transition text-2xl font-bold p-1 leading-none">&times;</button>
+            </div>
+
+            <div id="comments-list" class="flex-grow overflow-y-auto py-4 space-y-3 no-scrollbar my-2 max-h-[300px]">
+                <p id="comments-loading" class="text-xs text-pink-400/80 text-center py-6 tracking-widest uppercase animate-pulse">Loading responses...</p>
+            </div>
+
+            <form id="comment-form" onsubmit="submitComment(event)" class="space-y-3 pt-3 border-t border-pink-500/20">
+                <div class="grid grid-cols-1 gap-2">
+                    <input type="text" id="user-name" required placeholder="Your Name / Handle" class="w-full bg-black/60 border border-pink-500/20 rounded-xl px-3 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition">
+                    
+                    <div class="relative">
+                        <textarea id="user-message" maxlength="256" required oninput="updateCharCount(this)" rows="2" placeholder="Write your feedback (max 256 chars)..." class="w-full bg-black/60 border border-pink-500/20 rounded-xl p-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400 transition resize-none"></textarea>
+                        <span id="char-count" class="absolute bottom-2 right-3 text-[9px] text-gray-500 tracking-widest">0 / 256</span>
+                    </div>
+                </div>
+
+                <div id="image-preview-container" class="hidden relative inline-block">
+                    <img id="image-preview" src="" alt="Preview" class="h-20 w-auto rounded-lg border border-pink-500/40 object-cover shadow-[0_0_10px_rgba(236,72,153,0.2)]">
+                    <button type="button" onclick="removeSelectedImage()" class="absolute -top-2 -right-2 bg-rose-600 hover:bg-rose-700 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold shadow-md">&times;</button>
+                </div>
+
+                <div class="flex items-center justify-between gap-2 pt-1">
+                    <label class="cursor-pointer flex items-center gap-2 text-gray-400 hover:text-pink-400 transition bg-black/40 border border-pink-500/20 px-3 py-2 rounded-xl hover:border-pink-400/40">
+                        <svg class="w-4 h-4 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
+                        </svg>
+                        <span id="file-label" class="text-[10px] font-medium tracking-wider uppercase truncate max-w-[120px]">Attach Image</span>
+                        <input type="file" id="image-input" accept="image/*" onchange="handleImageUpload(event)" class="hidden">
+                    </label>
+
+                    <button type="submit" id="submit-btn" class="accent-gradient text-white font-bold px-5 py-2.5 rounded-xl text-xs tracking-[0.15em] uppercase hover:opacity-90 transition shadow-[0_0_15px_rgba(236,72,153,0.4)] active:scale-95">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
     <script>
-        // Database Discography Jennifer Haze
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwpTTi5H1o4kqoEbzbojxNHEbOolWpfhIxXxru6jQzrdn572dnt8w5QH8HwYw26rdrlbw/exec"; 
+
+        let base64Attachment = "";
+
+        function formatDate(dateString) {
+            if (!dateString) return '';
+            const d = new Date(dateString);
+            if (isNaN(d.getTime())) return dateString;
+
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            const hours = String(d.getHours()).padStart(2, '0');
+            const minutes = String(d.getMinutes()).padStart(2, '0');
+
+            return `${day}/${month}/${year} ${hours}:${minutes}`;
+        }
+
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+                    const maxDimension = 640;
+
+                    if (width > height) {
+                        if (width > maxDimension) {
+                            height = Math.round((height * maxDimension) / width);
+                            width = maxDimension;
+                        }
+                    } else {
+                        if (height > maxDimension) {
+                            width = Math.round((width * maxDimension) / height);
+                            height = maxDimension;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    base64Attachment = canvas.toDataURL('image/jpeg', 0.75);
+
+                    const previewImg = document.getElementById('image-preview');
+                    const previewContainer = document.getElementById('image-preview-container');
+                    previewImg.src = base64Attachment;
+                    previewContainer.classList.remove('hidden');
+                    document.getElementById('file-label').innerText = file.name;
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeSelectedImage() {
+            base64Attachment = "";
+            document.getElementById('image-input').value = "";
+            document.getElementById('image-preview').src = "";
+            document.getElementById('image-preview-container').classList.add('hidden');
+            document.getElementById('file-label').innerText = 'Attach Image';
+        }
+
+        async function fetchComments() {
+            const listContainer = document.getElementById('comments-list');
+            try {
+                const res = await fetch(WEB_APP_URL);
+                const data = await res.json();
+                
+                listContainer.innerHTML = '';
+                if (!data || data.length === 0) {
+                    listContainer.innerHTML = `<p class="text-xs text-gray-500 text-center py-4">No comments yet. Be the first!</p>`;
+                    return;
+                }
+
+                data.reverse().forEach(item => {
+                    const formattedTime = formatDate(item.timestamp);
+                    const attachmentHtml = item.attachment 
+                        ? `<img src="${item.attachment}" class="mt-2 rounded-lg max-h-36 object-cover border border-pink-500/20 shadow-md">` 
+                        : '';
+
+                    listContainer.innerHTML += `
+                        <div class="p-3 bg-pink-950/20 border border-pink-500/10 rounded-xl space-y-1 hover:border-pink-500/30 transition">
+                            <div class="flex justify-between items-center text-[10px] text-pink-400 font-semibold">
+                                <span>${item.name}</span>
+                                <span class="text-gray-500">${formattedTime}</span>
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed break-words">${item.message}</p>
+                            ${attachmentHtml}
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                listContainer.innerHTML = `<p class="text-xs text-rose-400 text-center py-4">Failed to load comments.</p>`;
+            }
+        }
+
+        async function submitComment(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerText = 'Posting...';
+            btn.disabled = true;
+
+            const payload = {
+                name: document.getElementById('user-name').value,
+                message: document.getElementById('user-message').value,
+                attachment: base64Attachment
+            };
+
+            try {
+                await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify(payload)
+                });
+
+                document.getElementById('comment-form').reset();
+                removeSelectedImage();
+                document.getElementById('char-count').innerText = '0 / 256';
+                
+                btn.innerText = 'Send';
+                btn.disabled = false;
+
+                setTimeout(fetchComments, 1500);
+            } catch (err) {
+                alert("Error sending comment");
+                btn.innerText = 'Send';
+                btn.disabled = false;
+            }
+        }
+
         const JEN_DATABASE = [
             { img: "images/ll.jpeg", url: "#" },
             { img: "images/wmc.jpeg", url: "#" },
@@ -341,7 +498,6 @@
             { img: "images/igby.jpeg", url: "#" }
         ];
 
-        // Database Behind The Canvas & Studio Jennifer Haze
         const BEHIND_CANVAS_DATABASE = [
             { img: "images/jen3.jpeg", caption: "Closed Eyes, Open Heart", aspect: "aspect-[1/1]" },
             { img: "images/jen2.jpeg",  caption: "Into the Haze", aspect: "aspect-[16/10]" },
@@ -353,7 +509,6 @@
             { img: "images/djen7.jpeg", caption: "Silent Horizon", aspect: "aspect-[16/10]" }
         ];
 
-        // Function to toggle Bio expander smoothly
         function toggleBio() {
             const bio = document.getElementById('expanded-bio');
             const btn = document.getElementById('read-more-btn');
@@ -416,6 +571,24 @@
                     </div>
                 `;
             });
+        }
+
+        function updateCharCount(textarea) {
+            const charCount = document.getElementById('char-count');
+            const currentLength = textarea.value.length;
+            charCount.innerText = `${currentLength} / 256`;
+        }
+
+        function toggleCommentModal() {
+            const modal = document.getElementById('comment-modal');
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+                fetchComments();
+            } else {
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }
         }
 
         document.addEventListener('DOMContentLoaded', initJenniferHazePage);
