@@ -354,38 +354,40 @@
         </a>
     </div>
 
-    <!-- TOGGLE BUTTON LEFT (CONTAINER UNTUK FEEDBACK + ADMIN) -->
-    <div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
-        <!-- Floating Button Feedback / Comments -->
-        <button onclick="toggleCommentModal()" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-cyan-500/30 p-2.5 px-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-cyan-400 hover:scale-105 relative">
-            <span class="absolute inset-0 rounded-full border border-cyan-500/50 animate-ping opacity-70 pointer-events-none"></span>
-            <span class="absolute -inset-1 rounded-full bg-cyan-500/10 blur-md opacity-100 pointer-events-none"></span>
-            <div class="w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(6,182,212,0.4)]">
-                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-            </div>
-            <div class="text-left">
-                <p class="text-[9px] text-cyan-400 tracking-widest uppercase font-semibold">Feedback</p>
-                <p class="text-xs text-gray-200 font-bold tracking-wide">Comments</p>
-            </div>
-        </button>
+<!-- TOGGLE BUTTON LEFT (CONTAINER UNTUK FEEDBACK + ADMIN) -->
+<div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+    
+    <!-- Floating Button Feedback / Comments -->
+    <button onclick="toggleCommentModal()" class="flex items-center gap-4 bg-black/90 backdrop-blur-md border border-cyan-500/30 p-2.5 pr-5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-cyan-400 hover:scale-105 relative">
+        <span class="absolute inset-0 rounded-full border border-cyan-500/50 animate-ping opacity-70 pointer-events-none"></span>
+        <span class="absolute -inset-1 rounded-full bg-cyan-500/10 blur-md opacity-100 pointer-events-none"></span>
+        <div class="w-10 h-10 rounded-full bg-cyan-500/10 border-2 border-cyan-500/60 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+        </div>
+        <div class="text-left">
+            <p class="text-[9px] text-cyan-400 tracking-widest uppercase font-semibold">Feedback</p>
+            <p class="text-xs text-gray-200 font-bold tracking-wide">Comments</p>
+        </div>
+    </button>
 
-        <!-- Floating Button Admin (Hidden by Default) -->
-        <button id="admin-float-btn" onclick="toggleAdminModal()" class="hidden flex items-center gap-3 bg-black/90 backdrop-blur-md border border-amber-500/40 p-2.5 px-4 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-amber-400 hover:scale-105 relative">
-            <span class="absolute -inset-1 rounded-full bg-amber-500/10 blur-md opacity-100 pointer-events-none"></span>
-            <div class="w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.4)]">
-                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-            </div>
-            <div class="text-left">
-                <p class="text-[9px] text-amber-400 tracking-widest uppercase font-semibold">Control Panel</p>
-                <p class="text-xs text-gray-200 font-bold tracking-wide">Admin</p>
-            </div>
-        </button>
-    </div>
+    <!-- Floating Button Admin (Hidden by Default) -->
+    <button id="admin-float-btn" onclick="toggleAdminModal()" class="hidden flex items-center gap-4 bg-black/90 backdrop-blur-md border border-amber-500/30 p-2.5 pr-5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-amber-400 hover:scale-105 relative">
+        <span class="absolute -inset-1 rounded-full bg-amber-500/10 blur-md opacity-100 pointer-events-none"></span>
+        <div class="w-10 h-10 rounded-full bg-amber-500/10 border-2 border-amber-500/60 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.5)]">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+        </div>
+        <div class="text-left">
+            <p class="text-[9px] text-amber-400 tracking-widest uppercase font-semibold">Control Panel</p>
+            <p class="text-xs text-gray-200 font-bold tracking-wide">Admin</p>
+        </div>
+    </button>
+
+</div>
 
     <!-- MODAL BOX: PASSWORD VERIFICATION (ALT + A) -->
     <div id="password-modal" class="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
