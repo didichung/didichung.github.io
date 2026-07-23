@@ -506,6 +506,34 @@
         </div>
     </div>
 
+<!-- MODAL BOX: EARPHONE / HEADPHONE RECOMMENDATION (AUTO SHOW ON LOAD) -->
+<div id="audio-notice-modal" class="fixed inset-0 z-[130] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-500">
+    <div class="premium-glass w-full max-w-sm rounded-2xl border border-amber-500/30 p-6 shadow-[0_0_50px_rgba(245,158,11,0.2)] relative flex flex-col items-center text-center space-y-4">
+        
+        <!-- Glowing Audio Icon -->
+        <div class="w-14 h-14 rounded-full bg-amber-500/10 border border-amber-500/40 flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+            <svg class="w-7 h-7 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+        </div>
+
+        <div class="space-y-1">
+            <h3 class="text-xs font-bold tracking-[0.25em] text-amber-400 uppercase flex items-center justify-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span> Audio Experience
+            </h3>
+            <h4 class="text-base font-bold text-white tracking-wide">Use Headphones / Earphones</h4>
+        </div>
+
+        <p class="text-xs text-gray-400 font-light leading-relaxed">
+            For full sound depth, rich low-end frequencies, and an optimal atmospheric experience, using headphones or earphones is highly recommended.
+        </p>
+
+        <button onclick="closeAudioNotice()" class="w-full bg-amber-500 hover:bg-amber-400 text-black font-bold py-3 rounded-xl text-xs tracking-[0.2em] uppercase transition duration-300 shadow-[0_0_20px_rgba(245,158,11,0.3)] mt-2">
+            Enter Experience
+        </button>
+    </div>
+</div>
+
     <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwpTTi5H1o4kqoEbzbojxNHEbOolWpfhIxXxru6jQzrdn572dnt8w5QH8HwYw26rdrlbw/exec"; 
     const ADMIN_HASH = "374961f303553001f5b4e05537bc655b02795ed2501866a94241caf70239e20f";
@@ -917,6 +945,7 @@
 
     function initDidiChungPage() {
         loadSpotifyData();
+        showAudioNotice();
 
         const canvasContainer = document.getElementById('canvas-slider');
         if (canvasContainer) {
@@ -984,6 +1013,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ----------------------------------------------------
+// FIRST OPEN AUDIO NOTICE MODAL (AMBER STYLE)
+// ----------------------------------------------------
+function showAudioNotice() {
+    // Cek apakah pengguna sudah pernah melihat modal ini di sesi sekarang
+    if (!sessionStorage.getItem('audioNoticeSeen')) {
+        const modal = document.getElementById('audio-notice-modal');
+        if (modal) {
+            // Beri sedikit jeda 400ms agar halaman ter-render sempurna lebih dulu
+            setTimeout(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100', 'pointer-events-auto');
+            }, 400);
+        }
+    }
+}
+
+function closeAudioNotice() {
+    const modal = document.getElementById('audio-notice-modal');
+    if (modal) {
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+    // Tanda bahwa modal sudah pernah dibuka pada sesi ini
+    sessionStorage.setItem('audioNoticeSeen', 'true');
+}
     </script>
 </body>
 </html>
