@@ -332,24 +332,21 @@
         </a>
     </div>
 
-    <!-- CORNER TOGGLE BUTTON - LEFT (COMMENTS & CRITIQUE) -->
-    <div class="fixed bottom-6 left-6 z-50 group">
-        <button onclick="toggleCommentModal()" class="flex items-center gap-3 bg-black/90 backdrop-blur-md border border-pink-500/40 p-2.5 px-4 rounded-full shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all duration-300 hover:border-pink-400 hover:scale-105 hover:shadow-[0_0_25px_rgba(236,72,153,0.5)] relative">
-            <span class="absolute inset-0 rounded-full border border-pink-500/50 animate-ping opacity-70 pointer-events-none"></span>
-            <span class="absolute -inset-1 rounded-full bg-pink-500/20 blur-md opacity-100 pointer-events-none"></span>
-            
-            <div class="w-8 h-8 rounded-full bg-pink-500/20 border border-pink-400/60 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(236,72,153,0.5)]">
-                <svg class="w-4 h-4 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-            </div>
-            
-            <div class="text-left">
-                <p class="text-[8px] md:text-[9px] text-pink-400 tracking-widest uppercase font-semibold">Feedback</p>
-                <p class="text-xs text-gray-200 font-bold tracking-wide">Comments</p>
-            </div>
-        </button>
-    </div>
+<!-- TOGGLE BUTTON LEFT (CONTAINER UNTUK FEEDBACK + ADMIN) -->
+<div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+    <button onclick="toggleCommentModal()" class="flex items-center gap-4 bg-black/90 backdrop-blur-md border border-pink-500/30 p-2.5 pr-5 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-pink-400 hover:scale-105 relative">
+        <span class="absolute inset-0 rounded-full border border-pink-500/50 animate-ping opacity-70 pointer-events-none"></span>
+        <span class="absolute -inset-1 rounded-full bg-pink-500/10 blur-md opacity-100 pointer-events-none"></span>
+        <div class="w-10 h-10 rounded-full bg-pink-500/10 border-2 border-pink-500/60 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+            <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+        </div>
+        <div class="text-left">
+            <p class="text-[9px] text-pink-400 tracking-widest uppercase font-semibold">Feedback</p>
+            <p class="text-xs text-gray-200 font-bold tracking-wide">Comments</p>
+        </div>
+    </button>
 
     <!-- MODAL BOX: COMMENTS & CRITIQUE -->
     <div id="comment-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
